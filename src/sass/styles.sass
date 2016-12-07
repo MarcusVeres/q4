@@ -1,0 +1,184 @@
+
+// imports
+
+@import 'fonts'
+@import 'colors'
+@import 'mixins'
+@import 'properties'
+
+
+// variables
+
+$mobile_cutoff: 640px
+$desktop_cutoff: 980px
+
+$max_content_width: 980px
+
+
+// properties and mixins
+
+
+// html elements
+
+html, body 
+    margin: 0
+    padding: 0
+    font-family: 'Roboto', 'Helvetica Neue', sans-serif
+    background: #f9f9f9
+    color: #222
+
+body
+    padding-bottom: 2rem
+
+h1, h2, h3, h4, h5, h6
+    font-family: 'Roboto Slab', serif
+    color: #97ED8A
+    color: #45BF55
+    // color: #167F39
+    // color: #044C29
+
+h1
+    $h1_size : 32px
+    font-weight: 400
+    font-size: $h1_size
+    vertical-align: middle
+    margin: 0
+    padding: 0
+
+img.main-logo 
+    max-width: 64px
+
+
+// sections
+
+section
+    clear: both
+    width: 100%
+    background-color: $off_white
+
+    &.flush
+        padding: 0
+
+    &.header
+        text-align: center
+        background: $white
+        min-height: 64px
+        line-height: 64px
+        vertical-align: middle
+        // @include grayscale-shadow( 12 , 0.2 )
+        border-bottom: 1px solid #CCC
+
+
+// wrappers
+
+.content-wrapper
+
+    max-width: $max_content_width
+    margin: auto
+    padding: 0 2rem
+
+    &.flush
+        padding-top: 0
+        padding-bottom: 0
+
+    &.padded
+        padding-top: 2.4rem
+        padding-bottom: 2.8rem
+
+    &.spaced
+        padding-top: 6rem
+        padding-bottom: 6rem
+
+    &.tight
+        max-width: 400px
+
+    &.narrow
+        max-width: 720px
+
+    &.wide
+        max-width: 1440px
+
+    &.unlimited
+        max-width: none
+
+    // reduce padding on smaller screens
+    @media screen and ( max-width: $mobile_cutoff )
+        padding: 1rem 2rem
+
+
+// nav
+
+
+// components
+
+.contact-view,
+.ui.link.cards
+
+    @include unstyled-list()
+    justify-content: center
+
+    &.list
+        .card
+            background: teal
+
+
+// .card 
+//     border: 1px solid $light_gray
+//     padding: 1rem 
+//     @include border-radius( 1rem )
+//     background: $white
+//     display: inline-block
+//     min-width: 200px
+//     width: 30%
+//     margin: 1%
+// 
+//     .content
+//         font-size: 1.1rem
+//     
+//     .header
+//         font-weight: 400
+// 
+//     .extra.content
+//         border-top: 1px solid gray
+
+// 
+
+.spacer_10
+    height: 10px
+.spacer_20
+    height: 20px
+.spacer_40
+    height: 40px
+.spacer_60
+    height: 60px
+.spacer_80
+    height: 80px
+
+.small-gap
+    height: 32px
+
+.gap
+    height: 800px
+
+
+// buttons
+
+// tables
+
+
+// lists
+
+.some-list
+    @include unstyled-list()
+    
+// forms
+
+
+// responsive hiders
+
+@media screen and (max-width: $mobile_cutoff)
+
+    .hide-from-phone
+        display: none
+
+

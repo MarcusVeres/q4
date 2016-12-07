@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Starter Page</title>
+
+    <meta name="description" content="HTML Page">
+    <meta name="author" content="Marcus">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css">
+    <link rel="stylesheet" href="/static/css/styles.min.css?v=1.0">
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+    <section class="header">
+    <div class="content-wrapper">
+
+        <!-- Header
+        Logo (your own design)
+        -->
+
+        <h1>
+            <!--
+            <img class="main-logo" src="/static/img/logo.svg" alt="Queue Four Logo">
+            -->
+            Queue Four
+        </h1>
+
+        <!-- Navigation 
+        - Contact List View ( List or Grid )
+        -->
+
+    </div>
+    </section>
+
+    <section>
+    <div class="content-wrapper">
+
+        <div id="app">
+            {{ message }}
+        </div>
+
+    </div>
+    </section>
+
+    <section>
+    <div class="content-wrapper">
+
+        <div class="contact-list-toggles"></div>
+
+        <button class="ui primary button" id="add-contact">
+            Add Contact  
+        </button>
+
+        <div class="contact-list">
+
+            <ul class="ui link cards" id="example-1">
+                <li class="card" v-for="item in items">
+                    <div class="image">
+                        <img src="http://lorempixel.com/200/200/people">
+                    </div>
+                    <div class="content">
+                        <div class="header">
+                            {{ item.firstName }} 
+                            {{ item.lastName }}
+                        </div>
+                        <div class="meta">
+                            {{ item.title }}
+                        </div>
+                        <div class="description">
+                            {{ item.Address1 }}<br>
+                        </div>
+                    </div>
+                    <div class="extra content">
+                        <span class="right floated">
+                            {{ item.State }}
+                        </span>
+                        <span>
+                            <i class="user icon"></i>
+                            {{ item.City }}
+                        </span>
+                    </div>
+                </li>
+            </ul>
+
+<!--
+<div class="ui link cards">
+  <div class="card">
+    <div class="image">
+      <img src="/images/avatar2/large/matthew.png">
+    </div>
+    <div class="content">
+      <div class="header">Matt Giampietro</div>
+      <div class="meta">
+        <a>Friends</a>
+      </div>
+      <div class="description">
+        Matthew is an interior designer living in New York.
+      </div>
+    </div>
+    <div class="extra content">
+      <span class="right floated">
+        Joined in 2013
+      </span>
+      <span>
+        <i class="user icon"></i>
+        75 Friends
+      </span>
+    </div>
+  </div>
+-->
+
+
+        </div>
+
+    </div>
+    </section>
+
+    <!-- Page 
+    Please make sure to display all contacts in a List view or Grid View ( Optionally add functionality for switching between views)
+    List or Grid View should show only First Name Last Name and Phone
+    Please place "Add Contact" button which will display a from for adding new contact, form should include 2 buttons save and cancel.
+    Save should add the contact to the array of contacts and add to the attached JSON file, and cancel should close the "Add Contact from", and return to list view.
+
+    On Click of a contact please display details of a contact with all the available data.
+
+    Detail view should have a functionality for editing and deleting the contact. 
+    When contact is in edit mode add 2 buttons "Save" and "Cancel"
+    - Save button should mimic an Ajax call to the database. No call needs to be made but please make sure the data is available for saving. 
+    - Cancel - Close the edit mode and display the detail view of the contact. 
+
+    Bonus: Please add filtering to the list of contacts.
+    Bonus: Save detail data changes to JSON file.
+
+    -->
+
+    <!-- Footer
+    Copyright some guy who shoots birds at the airport 2016. All rights reserved.
+    -->
+
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+    <script src="/static/js/helper.js"></script>
+    <script src="/static/js/scripts.min.js"></script>
+
+</body>
+</html>
+

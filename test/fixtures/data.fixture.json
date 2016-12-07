@@ -1,0 +1,14 @@
+[
+    {
+        "name" : "sword" ,
+        "type" : "melee" ,
+        "damage" : "10" ,
+        "speed" : "fast" 
+    } ,
+    {
+        "name" : "hammer" ,
+        "type" : "melee" ,
+        "damage" : "15" ,
+        "speed" : "slow" 
+    }
+]

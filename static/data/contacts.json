@@ -1,0 +1,47 @@
+[
+    {
+        "id": "1",
+        "firstName": "Amy",
+        "lastName": "Jones",
+        "title": "Sales Representative",
+        "Address1": "90 Street",
+        "City": "Toronto",
+        "State": "Ontario"
+    },
+    {
+        "id": "2",
+        "firstName": "James",
+        "lastName": "King",
+        "title": "President and CEO",
+        "Address1": "90 Street",
+        "City": "Toronto",
+        "State": "Ontario"
+    },
+    {
+        "id": "3",
+        "firstName": "Ray",
+        "lastName": "Moore",
+        "title": "VPofSales",
+        "Address1": "2323 Dundas St.",
+        "City": "Mississauga",
+        "State": "Ontario"
+    },
+    {
+        "id": "4",
+        "firstName": "John",
+        "lastName": "Williams",
+        "title": "VPofEngineering",
+        "Address1": "1343 Steels Ave.",
+        "City": "Brampton",
+        "State": "Ontario"
+    },
+    {
+        "id": "5",
+        "firstName": "Joe",
+        "lastName": "Doe",
+        "title": "SalesRepresentative",
+        "Address1": "3023 Parkerhill Rd.",
+        "City": "Mississauga",
+        "State": "Ontario"
+    }
+]
