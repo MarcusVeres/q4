@@ -31,6 +31,7 @@
             <!--
             <img class="main-logo" src="/static/img/logo.svg" alt="Queue Four Logo">
             -->
+            <i class="rocket icon"></i>
             Queue Four
         </h1>
 
@@ -45,7 +46,8 @@
     <div class="content-wrapper">
 
         <div id="app">
-            {{ message }}
+            <input v-model="message" placeholder="edit me">
+            <p>Message is: {{ message }}</p>
         </div>
 
     </div>
@@ -60,12 +62,18 @@
             Add Contact  
         </button>
 
-        <div class="contact-list">
+        <div class="contact-list" id="example-1">
 
-            <ul class="ui link cards" id="example-1">
-                <li class="card" v-for="item in items">
+            <input v-model="message" placeholder="edit me">
+            <p>Message is: {{ message }}</p>
+
+            <ul class="ui link cards">
+<!--
+                <li class="card" v-for="item in users">
+-->
+                <li class="card" v-for="item in filteredUsers">
                     <div class="image">
-                        <img src="http://lorempixel.com/200/200/people">
+                        <img src="http://placehold.it/256/256">
                     </div>
                     <div class="content">
                         <div class="header">
@@ -146,7 +154,10 @@
     Copyright some guy who shoots birds at the airport 2016. All rights reserved.
     -->
 
+    <!--
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
+-->
+    <script src="https://vuejs.org/js/vue.js"></script>
 
     <script src="/static/js/helper.js"></script>
     <script src="/static/js/scripts.min.js"></script>

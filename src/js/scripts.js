@@ -7,6 +7,8 @@
 
     // parent object to hold all of our stuff
     var expo = {
+    
+        example1 : null , 
 
         settings : {} ,
 
@@ -18,18 +20,17 @@
         {
             helper.loadJson( '/static/data/contacts.json' , function( contacts )
             {
-                console.log( contacts );
+                console.log( "contacts are:" , contacts );
 
                 // assign to local data object 
                 expo.data.contacts = contacts;
 
                 // populate vue 
-                var example1 = new Vue({
-                    el: '#example-1',
-                    data: {
-                        items : contacts
-                    }
-                })
+                expo.example1.users = contacts;
+                console.log( expo.example1.users );
+
+                console.log( "---------" );
+                console.log( "filtered:" , expo.example1.filteredUsers );
 
             })
         },
@@ -68,8 +69,74 @@
 
         init : function()
         {
+
+                // populate vue 
+                expo.example1 = new Vue({
+
+                    el: '#example-1',
+
+                    data: {
+                        users : [] ,
+                        message : "shit" ,
+                    },
+
+                    computed: {
+
+                        filteredUsers: function () {
+                            var self = this
+                            return self.users.filter(function (user) {
+                                // return user.firstName.indexOf(self.searchQuery) !== -1
+                                // return user.firstName.indexOf( self.message ) !== -1
+                                // return user.firstName.indexOf( self.message ) !== -1;
+
+                                  var searchRegex = new RegExp(self.message, 'i')
+                                  return searchRegex.test(user.firstName) || searchRegex.test(user.lastName)
+
+
+
+                            })
+                        },
+
+    /*
+  filteredUsers: function () {
+    var self = this
+    return self.users.filter(function (user) {
+        return "poop";
+        // return user.name.indexOf(self.searchQuery) !== -1
+    })
+  },
+*/
+
+/*
+    filteredUsers: function() {
+
+        var self = this
+        self.users.filter(function (user) {
+          var searchRegex = new RegExp(self.searchQuery, 'i')
+          return user.isActive && (
+            searchRegex.test(user.name) ||
+            searchRegex.test(user.email)
+          )
+        })
+
+    },
+*/
+
+                        reversedMessage: function () {
+                          // `this` points to the vm instance
+                          return this.message.split('').reverse().join('')
+                        }
+
+                    },
+
+                });
+
             expo.bindButtons();
             expo.loadContents();
+
+            expo.example1.message = "fuck";
+            console.log( expo.example1.reversedMessage )
+
         }
 
     };
