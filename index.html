@@ -26,7 +26,6 @@
         <!-- Header
         Logo (your own design)
         -->
-
         <h1>
             <!--
             <img class="main-logo" src="/static/img/logo.svg" alt="Queue Four Logo">
@@ -34,10 +33,6 @@
             <i class="rocket icon"></i>
             Queue Four
         </h1>
-
-        <!-- Navigation 
-        - Contact List View ( List or Grid )
-        -->
 
     </div>
     </section>
@@ -56,21 +51,65 @@
     <section>
     <div class="content-wrapper">
 
-        <div class="contact-list-toggles"></div>
+        <div class="contact-list-toggles">
 
-        <button class="ui primary button" id="add-contact">
-            Add Contact  
-        </button>
+            <!-- Navigation 
+            - Contact List View ( List or Grid )
+            Please make sure to display all contacts in a List view or Grid View 
+            ( Optionally add functionality for switching between views)
+            -->
+            <div class="ui icon buttons">
+                <button class="ui button active"><i class="bold icon"></i></button>
+                <button class="ui button"><i class="underline icon"></i></button>
+            </div>
+
+            <!-- 
+            Please place "Add Contact" button which will display a from for adding new contact, 
+            form should include 2 buttons save and cancel.
+            Save should add the contact to the array of contacts and add to the attached JSON file, 
+            and cancel should close the "Add Contact from", and return to list view.
+            -->
+            <button class="ui primary button" id="add-contact">
+                Add Contact  
+            </button>
+            <div class="ui left labeled button" tabindex="0">
+                <a class="ui basic right pointing label">
+                    2,048
+                </a>
+                <div class="ui button">
+                    <i class="heart icon"></i> Like
+                </div>
+            </div>                        
+            <div class="ui labeled button" tabindex="0">
+                <div class="ui red button">
+                    <i class="heart icon"></i> Like
+                </div>
+                <a class="ui basic red left pointing label">
+                    1,048
+                </a>
+            </div>
+
+            <!-- 
+            Bonus: Save detail data changes to JSON file.
+            -->
+            <button class="ui primary button" id="update-data">
+                Update JSON File
+            </button>
+
+        </div>
 
         <div class="contact-list" id="example-1">
 
+            <!-- 
+            Bonus: Please add filtering to the list of contacts.
+            -->
             <input v-model="message" placeholder="edit me">
             <p>Message is: {{ message }}</p>
 
+            <!-- 
+            List or Grid View should show only First Name Last Name and Phone
+            -->
             <ul class="ui link cards">
-<!--
-                <li class="card" v-for="item in users">
--->
                 <li class="card" v-for="item in filteredUsers">
                     <div class="image">
                         <img src="http://placehold.it/256/256">
@@ -126,39 +165,79 @@
   </div>
 -->
 
-
         </div>
 
     </div>
     </section>
 
-    <!-- Page 
-    Please make sure to display all contacts in a List view or Grid View ( Optionally add functionality for switching between views)
-    List or Grid View should show only First Name Last Name and Phone
-    Please place "Add Contact" button which will display a from for adding new contact, form should include 2 buttons save and cancel.
-    Save should add the contact to the array of contacts and add to the attached JSON file, and cancel should close the "Add Contact from", and return to list view.
+    <section>
+    <div class="content-wrapper">
 
-    On Click of a contact please display details of a contact with all the available data.
+        <!-- 
+        On Click of a contact please display details of a contact with all the available data.
+        Detail view should have a functionality for editing and deleting the contact. 
+        When contact is in edit mode add 2 buttons "Save" and "Cancel"
+        - Save button should mimic an Ajax call to the database. 
+            No call needs to be made but please make sure the data is available for saving. 
+        - Cancel - Close the edit mode and display the detail view of the contact. 
+        -->
+        <h4>View Contact Details</h4>
+        <p>
+            Idea: should the contact detail view expand the list or grid? 
+            Or, should it open a panel (a la nounproject)
+        </p>
 
-    Detail view should have a functionality for editing and deleting the contact. 
-    When contact is in edit mode add 2 buttons "Save" and "Cancel"
-    - Save button should mimic an Ajax call to the database. No call needs to be made but please make sure the data is available for saving. 
-    - Cancel - Close the edit mode and display the detail view of the contact. 
+        <div class="ui buttons">
+            <button class="ui button">Cancel</button>
+            <div class="or"></div>
+            <button class="ui positive button">Save</button>
+        </div>
 
-    Bonus: Please add filtering to the list of contacts.
-    Bonus: Save detail data changes to JSON file.
+        <div class="ui animated button" tabindex="0">
+          <div class="visible content">Next</div>
+          <div class="hidden content">
+            <i class="right arrow icon"></i>
+          </div>
+        </div>
+        <div class="ui vertical animated button" tabindex="0">
+          <div class="hidden content">Shop</div>
+          <div class="visible content">
+            <i class="shop icon"></i>
+          </div>
+        </div>
+        <div class="ui animated fade button" tabindex="0">
+          <div class="visible content">Sign-up for a Pro account</div>
+          <div class="hidden content">
+            $12.99 a month
+          </div>
+        </div>
 
-    -->
+    </div>
+    </section>
 
-    <!-- Footer
-    Copyright some guy who shoots birds at the airport 2016. All rights reserved.
-    -->
+    <section>
+    <div class="content-wrapper">
 
-    <!--
+        <h4>Add New Contact Form Goes Here</h4>
+
+        <div class="ui buttons">
+            <button class="ui button">Cancel</button>
+            <div class="or"></div>
+            <button class="ui positive button">Save</button>
+        </div>
+
+    </div>
+    </section>
+
+    <section class="footer">
+    <div class="content-wrapper">
+        <!-- Footer
+        Copyright some guy who shoots birds at the airport 2016. All rights reserved.
+        -->
+    </div>
+    </section>
+
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
--->
-    <script src="https://vuejs.org/js/vue.js"></script>
-
     <script src="/static/js/helper.js"></script>
     <script src="/static/js/scripts.min.js"></script>
 
