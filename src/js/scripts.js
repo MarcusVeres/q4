@@ -10,10 +10,14 @@
     
         example1 : null , 
 
-        settings : {} ,
+        settings : {
+            displayMode : "aligned" , 
+        } ,
 
         data : {
-            contacts : []
+            contacts : [] , 
+            currentContact : {} , 
+            newContact : {} ,
         } ,
 
         loadContents : function()
@@ -39,8 +43,13 @@
         {   
             console.log( "processing contact" );
             var newContact = {
-                firstName : "Bill", 
-                lastName : "Burr", 
+                id: ( expo.data.contacts.length + 1 ).toString(),
+                firstName: "Bill",
+                lastName: "Burr",
+                title: "Sales Representative",
+                Address1: "90 Street",
+                City: "Toronto",
+                State: "Ontario"
             };
             expo.addContact( newContact );
         },
@@ -49,6 +58,16 @@
         {
             expo.data.contacts.push( newContact );
             console.log( expo.data.contacts );
+        },
+
+        selectContact : function()
+        {
+
+        },
+
+        editContact : function()
+        {
+
         },
 
         removeContact : function()
@@ -61,43 +80,64 @@
             // code goes here
         },
 
+        // 
+        
+        setDisplayGrid : function() 
+        {
+            expo.example1.isGridView = true;
+            expo.example1.isListView = false;
+        },
+        
+        setDisplayList : function() 
+        {
+            expo.example1.isGridView = false;
+            expo.example1.isListView = true;
+        },
+
+        // 
+
         bindButtons : function()
         {
             console.log( "binding buttons" );
             document.getElementById( 'add-contact' ).addEventListener( 'click' , expo.processContact );
+            document.getElementById( 'set-view-list' ).addEventListener( 'click' , expo.setDisplayList );
+            document.getElementById( 'set-view-grid' ).addEventListener( 'click' , expo.setDisplayGrid );
         },
 
         init : function()
         {
+            // populate vue 
+            expo.example1 = new Vue({
 
-                // populate vue 
-                expo.example1 = new Vue({
+                el: '#example-1',
 
-                    el: '#example-1',
+                data: {
+                    // TODO : get some of these from the settings in the parent object
+                    users : [] ,
+                    message : "" ,
+                    displayMode : expo.settings.displayMode ,
+                    isListView : true ,
+                    isGridView : false ,
+                },
 
-                    data: {
-                        users : [] ,
-                        message : "" ,
+                computed: {
+                    filteredUsers: function () {
+                        var self = this
+                        return self.users.filter(function (user) {
+                            // return user.firstName.indexOf(self.searchQuery) !== -1
+                            // return user.firstName.indexOf( self.message ) !== -1
+                            // return user.firstName.indexOf( self.message ) !== -1;
+                            var searchRegex = new RegExp(self.message, 'i')
+                            return searchRegex.test( user.firstName ) || searchRegex.test( user.lastName )
+                        })
                     },
+                    reversedMessage: function () {
+                      // `this` points to the vm instance
+                      return this.message.split('').reverse().join('')
+                    }
+                },
 
-                    computed: {
-                        filteredUsers: function () {
-                            var self = this
-                            return self.users.filter(function (user) {
-                                // return user.firstName.indexOf(self.searchQuery) !== -1
-                                // return user.firstName.indexOf( self.message ) !== -1
-                                // return user.firstName.indexOf( self.message ) !== -1;
-                                var searchRegex = new RegExp(self.message, 'i')
-                                return searchRegex.test( user.firstName ) || searchRegex.test( user.lastName )
-                            })
-                        },
-                        reversedMessage: function () {
-                          // `this` points to the vm instance
-                          return this.message.split('').reverse().join('')
-                        }
-                    },
-
-                });
+            });
 
             expo.bindButtons();
             expo.loadContents();
