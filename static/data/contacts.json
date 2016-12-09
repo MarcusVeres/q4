@@ -6,7 +6,8 @@
         "title": "Sales Representative",
         "Address1": "90 Street",
         "City": "Toronto",
-        "State": "Ontario"
+        "State": "Ontario",
+        "phone": "416-123-4567"
     },
     {
         "id": "2",
@@ -15,7 +16,8 @@
         "title": "President and CEO",
         "Address1": "90 Street",
         "City": "Toronto",
-        "State": "Ontario"
+        "State": "Ontario",
+        "phone": "416-123-4567"
     },
     {
         "id": "3",
@@ -33,7 +35,8 @@
         "title": "VPofEngineering",
         "Address1": "1343 Steels Ave.",
         "City": "Brampton",
-        "State": "Ontario"
+        "State": "Ontario",
+        "phone": "416-123-4567"
     },
     {
         "id": "5",
