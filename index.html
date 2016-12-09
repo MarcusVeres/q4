@@ -100,19 +100,19 @@
 
         </div>
 
+        <!-- 
+        List or Grid View should show only First Name Last Name and Phone
+        -->
         <div class="contact-list">
-            <!-- 
-            List or Grid View should show only First Name Last Name and Phone
-            -->
             <div class="ui middle aligned divided list" v-bind:class="{ aligned : isListView , horizontal : isGridView }">
-                <div class="item" v-for="user in filteredUsers">
+                <div class="item" v-for="( user , index) in filteredUsers" v-on:click="selectContact( index )">
                     <div class="right floated content">
-                        <div class="ui flush button" v-bind:class="{ disabled : !user.phone }">
+                        <a :href="'tel:' + user.phone" target="_blank" class="ui flush button" v-bind:class="{ disabled : !user.phone }">
                             <i class="phone icon"></i>
                             <span class="hide-from-mobile">
                                 {{ user.phone || "Not Available" }}
                             </span>
-                        </div>
+                        </a>
                     </div>
                     <img class="ui avatar image" src="http://placehold.it/64/64/">
                     <div class="content">
