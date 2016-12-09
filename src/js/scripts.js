@@ -41,20 +41,14 @@
 
         processContact : function()
         {   
-            console.log( "processing contact" );
-            var newContact = {
-                id: ( expo.data.contacts.length + 1 ).toString(),
-                firstName: expo.vue.newContact.firstName,
-                lastName: expo.vue.newContact.lastName,
-                title: expo.vue.newContact.title,
-                phone: expo.vue.newContact.phone,
-                email: expo.vue.newContact.email,
-                address1: expo.vue.newContact.address1,
-                city: expo.vue.newContact.city,
-                state: expo.vue.newContact.state,
-            };
+            // create a shortcut to the newContact object
+            var newContact = expo.vue.newContact;
+
+            // simulate the ID because we're not using a database
+            newContact.id = ( expo.data.contacts.length + 1 ).toString();
+
+            // processing is complete
             expo.addContact( newContact );
-            // done with the panel
             expo.vue.hideNewContactPane();
         },
 
