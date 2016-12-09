@@ -8,7 +8,7 @@
     // parent object to hold all of our stuff
     var expo = {
     
-        example1 : null , 
+        vue : null , 
 
         settings : {
             displayMode : "aligned" , 
@@ -30,11 +30,11 @@
                 expo.data.contacts = contacts;
 
                 // populate vue 
-                expo.example1.users = contacts;
-                console.log( expo.example1.users );
+                expo.vue.users = contacts;
+                console.log( expo.vue.users );
 
                 console.log( "---------" );
-                console.log( "filtered:" , expo.example1.filteredUsers );
+                console.log( "filtered:" , expo.vue.filteredUsers );
 
             })
         },
@@ -84,14 +84,14 @@
         
         setDisplayGrid : function() 
         {
-            expo.example1.isGridView = true;
-            expo.example1.isListView = false;
+            expo.vue.isGridView = true;
+            expo.vue.isListView = false;
         },
         
         setDisplayList : function() 
         {
-            expo.example1.isGridView = false;
-            expo.example1.isListView = true;
+            expo.vue.isGridView = false;
+            expo.vue.isListView = true;
         },
 
         // 
@@ -107,7 +107,7 @@
         init : function()
         {
             // populate vue 
-            expo.example1 = new Vue({
+            expo.vue = new Vue({
 
                 el: '#example-1',
 
@@ -143,8 +143,8 @@
             expo.loadContents();
 
             // set search message test 
-            expo.example1.message = "";
-            console.log( expo.example1.reversedMessage )
+            expo.vue.message = "";
+            console.log( expo.vue.reversedMessage )
         }
 
     };
