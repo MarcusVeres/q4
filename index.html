@@ -238,37 +238,44 @@
         -->
 
         <h4>Edit Contact Details</h4>
+        <!-- TODO: we need a different layout for the edit contact, as it'll be in a smaller window -->
         <div class="ui form">
-            <div class="two fields">
+            <div class="three fields">
                 <div class="field">
                     <label>First name</label>
-                    <input type="text" placeholder="First Name">
+                    <input v-model="currentContact.firstName" type="text" placeholder="First Name">
                 </div>
                 <div class="field">
                     <label>Last name</label>
-                    <input type="text" placeholder="Last Name">
+                    <input v-model="currentContact.lastName" type="text" placeholder="Last Name">
                 </div>
-            </div>
-            <div class="field">
-                <label>Title</label>
-                <input type="text" placeholder="First Name">
-            </div>
-            <div class="field">
-                <label>Phone</label>
-                <input type="text" placeholder="First Name">
-            </div>
-            <div class="field">
-                <label>Address</label>
-                <input type="text" placeholder="First Name">
+                <div class="field">
+                    <label>Title</label>
+                    <input v-model="currentContact.title" type="text" placeholder="Title">
+                </div>
             </div>
             <div class="two fields">
                 <div class="field">
+                    <label>Phone</label>
+                    <input v-model="currentContact.phone" type="text" placeholder="Phone">
+                </div>
+                <div class="field">
+                    <label>e-Mail</label>
+                    <input v-model="currentContact.email" type="text" placeholder="e-Mail">
+                </div>
+            </div>
+            <div class="three fields">
+                <div class="field">
+                    <label>Address</label>
+                    <input v-model="currentContact.address1" type="text" placeholder="Address">
+                </div>
+                <div class="field">
                     <label>City</label>
-                    <input type="text" placeholder="First Name">
+                    <input v-model="currentContact.city" type="text" placeholder="City">
                 </div>
                 <div class="field">
                     <label>State</label>
-                    <input type="text" placeholder="Last Name">
+                    <input v-model="newContact.state" type="text" placeholder="State">
                 </div>
             </div>
         </div>
@@ -276,7 +283,7 @@
         <div class="ui buttons">
             <button class="ui button">Cancel</button>
             <div class="or"></div>
-            <button class="ui positive button">Save</button>
+            <button class="ui positive button">Save Changes</button>
         </div>
 
     </div>
