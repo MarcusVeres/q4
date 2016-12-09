@@ -9,13 +9,22 @@
 
 // variables
 
-$mobile_cutoff: 640px
+// $mobile_cutoff: 640px
+$mobile_cutoff: 480px
 $desktop_cutoff: 980px
 
 $max_content_width: 980px
 
 
 // properties and mixins
+
+
+// semantic-ui overrides
+.ui.flush.button > .icon:not(.button)
+    margin: 0
+
+.ui.flush.button:not(.icon) > .icon:not(.button):not(.dropdown)
+    margin: 0
 
 
 // html elements
@@ -178,7 +187,6 @@ section
 
 @media screen and (max-width: $mobile_cutoff)
 
-    .hide-from-phone
+    .hide-from-mobile
         display: none
-
 

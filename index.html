@@ -51,10 +51,10 @@
             -->
             <div class="item">
                 <div class="ui icon buttons">
-                    <button id="set-view-list" class="ui button" v-bind:class="{ active: isListView }">
+                    <button id="set-view-list" class="ui flush button" v-bind:class="{ active: isListView }">
                         <i class="list layout icon"></i>
                     </button>
-                    <button id="set-view-grid" class="ui button" v-bind:class="{ active: isGridView }">
+                    <button id="set-view-grid" class="ui flush button" v-bind:class="{ active: isGridView }">
                         <i class="grid layout icon"></i>
                     </button>
                 </div>
@@ -107,8 +107,11 @@
             <div class="ui middle aligned divided list" v-bind:class="{ aligned : isListView , horizontal : isGridView }">
                 <div class="item" v-for="user in filteredUsers">
                     <div class="right floated content">
-                        <div class="ui button" v-bind:class="{ disabled : !user.phone }">
-                            <i class="phone icon"></i>{{ user.phone || "Not Available" }}
+                        <div class="ui flush button" v-bind:class="{ disabled : !user.phone }">
+                            <i class="phone icon"></i>
+                            <span class="hide-from-mobile">
+                                {{ user.phone || "Not Available" }}
+                            </span>
                         </div>
                     </div>
                     <img class="ui avatar image" src="http://placehold.it/64/64/">
@@ -134,29 +137,29 @@
         </p>
 
         <ul class="ui link cards">
-            <li class="card" v-for="item in filteredUsers">
+            <li class="card">
                 <div class="image">
                     <img src="http://placehold.it/256/256">
                 </div>
                 <div class="content">
                     <div class="header">
-                        {{ item.firstName }} 
-                        {{ item.lastName }}
+                        {{ currentContact.firstName }} 
+                        {{ currentContact.lastName }}
                     </div>
                     <div class="meta">
-                        {{ item.title }}
+                        {{ currentContact.title }}
                     </div>
                     <div class="description">
-                        {{ item.Address1 }}<br>
+                        {{ currentContact.Address1 }}<br>
                     </div>
                 </div>
                 <div class="extra content">
                     <span class="right floated">
-                        {{ item.State }}
+                        {{ currentContact.State }}
                     </span>
                     <span>
                         <i class="user icon"></i>
-                        {{ item.City }}
+                        {{ currentContact.City }}
                     </span>
                 </div>
             </li>

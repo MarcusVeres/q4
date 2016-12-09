@@ -116,6 +116,7 @@
                     users : [] ,
                     message : "" ,
                     displayMode : expo.settings.displayMode ,
+                    currentContact : expo.data.currentContact ,
                     isListView : true ,
                     isGridView : false ,
                 },
