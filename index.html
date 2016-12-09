@@ -43,7 +43,6 @@
     <div class="content-wrapper">
 
         <div class="ui secondary menu">
-
             <!-- Navigation 
             - Contact List View ( List or Grid )
             Please make sure to display all contacts in a List view or Grid View 
@@ -83,7 +82,7 @@
                             <i class="user icon"></i> 5
 
                         </a>
-                        <div id="add-contact" class="ui green button">
+                        <div id="show-add-contact" v-on:click="showNewContactPane" class="ui green button">
                             <i class="add icon"></i> New
                         </div>
                     </div>                        
@@ -97,7 +96,58 @@
                     </button>
                 </div>
             </div>
+        </div>
 
+        <div id="add-new-contact" class="collapsible-pane" v-bind:class="{ hidden: !isNewContactPaneVisible }"> 
+            <h4>
+                <i class="user icon"></i>
+                Add New Contact
+            </h4>
+            <div class="ui form">
+                <div class="three fields">
+                    <div class="field">
+                        <label>First name</label>
+                        <input type="text" placeholder="First Name">
+                    </div>
+                    <div class="field">
+                        <label>Last name</label>
+                        <input type="text" placeholder="Last Name">
+                    </div>
+                    <div class="field">
+                        <label>Title</label>
+                        <input type="text" placeholder="First Name">
+                    </div>
+                </div>
+                <div class="two fields">
+                    <div class="field">
+                        <label>Phone</label>
+                        <input type="text" placeholder="First Name">
+                    </div>
+                    <div class="field">
+                        <label>Email</label>
+                        <input type="text" placeholder="First Name">
+                    </div>
+                </div>
+                <div class="three fields">
+                    <div class="field">
+                        <label>Address</label>
+                        <input type="text" placeholder="First Name">
+                    </div>
+                    <div class="field">
+                        <label>City</label>
+                        <input type="text" placeholder="First Name">
+                    </div>
+                    <div class="field">
+                        <label>State</label>
+                        <input type="text" placeholder="Last Name">
+                    </div>
+                </div>
+            </div>
+            <div class="ui buttons">
+                <button class="ui button" v-on:click="hideNewContactPane">Cancel</button>
+                <div class="or"></div>
+                <button id="add-contact" class="ui positive button">Add Contact</button>
+            </div>
         </div>
 
         <!-- 
@@ -125,10 +175,6 @@
         <!-- 
         On Click of a contact please display details of a contact with all the available data.
         Detail view should have a functionality for editing and deleting the contact. 
-        When contact is in edit mode add 2 buttons "Save" and "Cancel"
-        - Save button should mimic an Ajax call to the database. 
-            No call needs to be made but please make sure the data is available for saving. 
-        - Cancel - Close the edit mode and display the detail view of the contact. 
         -->
         <h4>View Contact Details</h4>
         <p>
@@ -165,12 +211,6 @@
             </li>
         </ul>
 
-        <div class="ui buttons">
-            <button class="ui button">Cancel</button>
-            <div class="or"></div>
-            <button class="ui positive button">Save</button>
-        </div>
-
         <div class="ui animated button" tabindex="0">
           <div class="visible content">Next</div>
           <div class="hidden content">
@@ -190,13 +230,48 @@
           </div>
         </div>
 
-    </div>
-    </section>
+        <!--
+        When contact is in edit mode add 2 buttons "Save" and "Cancel"
+        - Save button should mimic an Ajax call to the database. 
+            No call needs to be made but please make sure the data is available for saving. 
+        - Cancel - Close the edit mode and display the detail view of the contact. 
+        -->
 
-    <section>
-    <div class="content-wrapper">
-
-        <h4>Add New Contact Form Goes Here</h4>
+        <h4>Edit Contact Details</h4>
+        <div class="ui form">
+            <div class="two fields">
+                <div class="field">
+                    <label>First name</label>
+                    <input type="text" placeholder="First Name">
+                </div>
+                <div class="field">
+                    <label>Last name</label>
+                    <input type="text" placeholder="Last Name">
+                </div>
+            </div>
+            <div class="field">
+                <label>Title</label>
+                <input type="text" placeholder="First Name">
+            </div>
+            <div class="field">
+                <label>Phone</label>
+                <input type="text" placeholder="First Name">
+            </div>
+            <div class="field">
+                <label>Address</label>
+                <input type="text" placeholder="First Name">
+            </div>
+            <div class="two fields">
+                <div class="field">
+                    <label>City</label>
+                    <input type="text" placeholder="First Name">
+                </div>
+                <div class="field">
+                    <label>State</label>
+                    <input type="text" placeholder="Last Name">
+                </div>
+            </div>
+        </div>
 
         <div class="ui buttons">
             <button class="ui button">Cancel</button>

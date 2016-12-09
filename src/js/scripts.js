@@ -52,6 +52,8 @@
                 State: "Ontario"
             };
             expo.addContact( newContact );
+            // done with the panel
+            expo.vue.hideNewContactPane();
         },
 
         addContact : function( newContact )
@@ -112,6 +114,16 @@
                     message : "" ,
                     displayMode : expo.settings.displayMode ,
                     currentContact : expo.data.currentContact ,
+                    isNewContactPaneVisible : false ,
+                    newContact : {
+                        firstName: null,
+                        lastName: null,
+                        title: null,
+                        Address1: null,
+                        City: null,
+                        State: null,
+                        phone: null,
+                    } , 
                     isListView : true ,
                     isGridView : false ,
                 },
@@ -135,8 +147,15 @@
 
                 methods: {
 
-                    selectContact : function( index )
-                    {
+                    showNewContactPane : function() {
+                        expo.vue.isNewContactPaneVisible = true;
+                    },
+
+                    hideNewContactPane : function() {
+                        expo.vue.isNewContactPaneVisible = false;
+                    },
+
+                    selectContact : function( index ) {
                         expo.vue.currentContact = expo.data.contacts[ index ];
                     }, 
 
