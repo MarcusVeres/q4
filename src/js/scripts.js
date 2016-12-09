@@ -60,11 +60,6 @@
             console.log( expo.data.contacts );
         },
 
-        selectContact : function()
-        {
-
-        },
-
         editContact : function()
         {
 
@@ -136,6 +131,15 @@
                       // `this` points to the vm instance
                       return this.message.split('').reverse().join('')
                     }
+                },
+
+                methods: {
+
+                    selectContact : function( index )
+                    {
+                        expo.vue.currentContact = expo.data.contacts[ index ];
+                    }, 
+
                 },
 
             });
