@@ -51,8 +51,12 @@
             -->
             <div class="item">
                 <div class="ui icon buttons">
-                    <button id="set-view-list" class="ui button"><i class="list layout icon"></i></button>
-                    <button id="set-view-grid" class="ui button active"><i class="grid layout icon"></i></button>
+                    <button id="set-view-list" class="ui button" v-bind:class="{ active: isListView }">
+                        <i class="list layout icon"></i>
+                    </button>
+                    <button id="set-view-grid" class="ui button" v-bind:class="{ active: isGridView }">
+                        <i class="grid layout icon"></i>
+                    </button>
                 </div>
             </div>
             <!-- 
