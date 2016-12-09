@@ -1,5 +1,16 @@
 ### Contacts Expo
 
+The detailed description of the assignment is included in the index.html file attached, but here are the highlights. 
+The idea behind this assignment is to create a contact list with the following functionality:
+1) As a user I can see a list of contacts (from JSON file attached)
+2) As a user I am able to add a contact to the list
+3) As a user I am able to edit user's detail
+
+Bonus functionality:
+1) When creating a new / editing existing user to add / update the record to the JSON file 
+2) Add filtering or search to the list
+3) Make the UI responsive 
+
 
 ### Tech Stack
 
