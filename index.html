@@ -18,7 +18,9 @@
     <![endif]-->
 
 </head>
-<body>
+<body> 
+
+<div class="site-wrapper">
 
     <section class="header">
     <div class="content-wrapper">
@@ -37,74 +39,64 @@
     </div>
     </section>
 
-    <section>
+    <section class="contact-list-header" id="example-1">
     <div class="content-wrapper">
 
-        <div id="app">
-            <input v-model="message" placeholder="edit me">
-            <p>Message is: {{ message }}</p>
-        </div>
-
-    </div>
-    </section>
-
-    <section>
-    <div class="content-wrapper">
-
-        <div class="contact-list-toggles">
+        <div class="ui secondary menu">
 
             <!-- Navigation 
             - Contact List View ( List or Grid )
             Please make sure to display all contacts in a List view or Grid View 
             ( Optionally add functionality for switching between views)
             -->
-            <div class="ui icon buttons">
-                <button class="ui button active"><i class="bold icon"></i></button>
-                <button class="ui button"><i class="underline icon"></i></button>
-            </div>
-
-            <!-- 
-            Please place "Add Contact" button which will display a from for adding new contact, 
-            form should include 2 buttons save and cancel.
-            Save should add the contact to the array of contacts and add to the attached JSON file, 
-            and cancel should close the "Add Contact from", and return to list view.
-            -->
-            <button class="ui primary button" id="add-contact">
-                Add Contact  
-            </button>
-            <div class="ui left labeled button" tabindex="0">
-                <a class="ui basic right pointing label">
-                    2,048
-                </a>
-                <div class="ui button">
-                    <i class="heart icon"></i> Like
+            <div class="item">
+                <div class="ui icon buttons">
+                    <button id="set-view-list" class="ui button"><i class="list layout icon"></i></button>
+                    <button id="set-view-grid" class="ui button active"><i class="grid layout icon"></i></button>
                 </div>
-            </div>                        
-            <div class="ui labeled button" tabindex="0">
-                <div class="ui red button">
-                    <i class="heart icon"></i> Like
-                </div>
-                <a class="ui basic red left pointing label">
-                    1,048
-                </a>
             </div>
-
-            <!-- 
-            Bonus: Save detail data changes to JSON file.
-            -->
-            <button class="ui primary button" id="update-data">
-                Update JSON File
-            </button>
-
-        </div>
-
-        <div class="contact-list" id="example-1">
-
             <!-- 
             Bonus: Please add filtering to the list of contacts.
             -->
-            <input v-model="message" placeholder="edit me">
-            <p>Message is: {{ message }}</p>
+            <div class="item">
+                <div class="ui action left icon input">
+                    <i class="search icon"></i>
+                    <input v-model="message" type="text" placeholder="Search">
+                    <button class="ui button">Clear</button>
+                </div>
+            </div>
+
+            <div class="right menu">
+                <!-- 
+                Please place "Add Contact" button which will display a from for adding new contact, 
+                form should include 2 buttons save and cancel.
+                Save should add the contact to the array of contacts and add to the attached JSON file, 
+                and cancel should close the "Add Contact from", and return to list view.
+                -->
+                <div class="item">
+                    <div class="ui left labeled button" tabindex="0">
+                        <a class="ui basic right pointing label">
+                            <i class="user icon"></i> 5
+
+                        </a>
+                        <div id="add-contact" class="ui green button">
+                            <i class="add icon"></i> New
+                        </div>
+                    </div>                        
+                </div>                        
+                <!-- 
+                Bonus: Save detail data changes to JSON file.
+                -->
+                <div class="item">
+                    <button class="ui primary button" id="update-data">
+                        <i class="save icon"></i> JSON 
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="contact-list">
 
             <!-- 
             List or Grid View should show only First Name Last Name and Phone
@@ -241,6 +233,7 @@
     <script src="/static/js/helper.js"></script>
     <script src="/static/js/scripts.min.js"></script>
 
+</div>
 </body>
 </html>
 

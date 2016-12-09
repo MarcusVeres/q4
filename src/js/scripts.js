@@ -77,56 +77,24 @@
 
                     data: {
                         users : [] ,
-                        message : "shit" ,
+                        message : "" ,
                     },
 
                     computed: {
-
                         filteredUsers: function () {
                             var self = this
                             return self.users.filter(function (user) {
                                 // return user.firstName.indexOf(self.searchQuery) !== -1
                                 // return user.firstName.indexOf( self.message ) !== -1
                                 // return user.firstName.indexOf( self.message ) !== -1;
-
-                                  var searchRegex = new RegExp(self.message, 'i')
-                                  return searchRegex.test(user.firstName) || searchRegex.test(user.lastName)
-
-
-
+                                var searchRegex = new RegExp(self.message, 'i')
+                                return searchRegex.test( user.firstName ) || searchRegex.test( user.lastName )
                             })
                         },
-
-    /*
-  filteredUsers: function () {
-    var self = this
-    return self.users.filter(function (user) {
-        return "poop";
-        // return user.name.indexOf(self.searchQuery) !== -1
-    })
-  },
-*/
-
-/*
-    filteredUsers: function() {
-
-        var self = this
-        self.users.filter(function (user) {
-          var searchRegex = new RegExp(self.searchQuery, 'i')
-          return user.isActive && (
-            searchRegex.test(user.name) ||
-            searchRegex.test(user.email)
-          )
-        })
-
-    },
-*/
-
                         reversedMessage: function () {
                           // `this` points to the vm instance
                           return this.message.split('').reverse().join('')
                         }
-
                     },
 
                 });
@@ -134,9 +102,9 @@
             expo.bindButtons();
             expo.loadContents();
 
-            expo.example1.message = "fuck";
+            // set search message test 
+            expo.example1.message = "";
             console.log( expo.example1.reversedMessage )
-
         }
 
     };
@@ -153,6 +121,7 @@
 })();
 
 
+/*
 (function()
 {
 
@@ -164,4 +133,5 @@
     })
 
 })();
+*/
 
