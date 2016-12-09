@@ -44,12 +44,14 @@
             console.log( "processing contact" );
             var newContact = {
                 id: ( expo.data.contacts.length + 1 ).toString(),
-                firstName: "Bill",
-                lastName: "Burr",
-                title: "Sales Representative",
-                Address1: "90 Street",
-                City: "Toronto",
-                State: "Ontario"
+                firstName: expo.vue.newContact.firstName,
+                lastName: expo.vue.newContact.lastName,
+                title: expo.vue.newContact.title,
+                phone: expo.vue.newContact.phone,
+                email: expo.vue.newContact.email,
+                address1: expo.vue.newContact.address1,
+                city: expo.vue.newContact.city,
+                state: expo.vue.newContact.state,
             };
             expo.addContact( newContact );
             // done with the panel
@@ -115,15 +117,7 @@
                     displayMode : expo.settings.displayMode ,
                     currentContact : expo.data.currentContact ,
                     isNewContactPaneVisible : false ,
-                    newContact : {
-                        firstName: null,
-                        lastName: null,
-                        title: null,
-                        Address1: null,
-                        City: null,
-                        State: null,
-                        phone: null,
-                    } , 
+                    newContact : {} , 
                     isListView : true ,
                     isGridView : false ,
                 },

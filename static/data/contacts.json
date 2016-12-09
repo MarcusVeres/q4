@@ -4,9 +4,9 @@
         "firstName": "Amy",
         "lastName": "Jones",
         "title": "Sales Representative",
-        "Address1": "90 Street",
-        "City": "Toronto",
-        "State": "Ontario",
+        "address1": "90 Street",
+        "city": "Toronto",
+        "state": "Ontario",
         "phone": "416-123-4567"
     },
     {
@@ -14,9 +14,9 @@
         "firstName": "James",
         "lastName": "King",
         "title": "President and CEO",
-        "Address1": "90 Street",
-        "City": "Toronto",
-        "State": "Ontario",
+        "address1": "90 Street",
+        "city": "Toronto",
+        "state": "Ontario",
         "phone": "416-123-4567"
     },
     {
@@ -24,18 +24,18 @@
         "firstName": "Ray",
         "lastName": "Moore",
         "title": "VPofSales",
-        "Address1": "2323 Dundas St.",
-        "City": "Mississauga",
-        "State": "Ontario"
+        "address1": "2323 Dundas St.",
+        "city": "Mississauga",
+        "state": "Ontario"
     },
     {
         "id": "4",
         "firstName": "John",
         "lastName": "Williams",
         "title": "VPofEngineering",
-        "Address1": "1343 Steels Ave.",
-        "City": "Brampton",
-        "State": "Ontario",
+        "address1": "1343 Steels Ave.",
+        "city": "Brampton",
+        "state": "Ontario",
         "phone": "416-123-4567"
     },
     {
@@ -43,8 +43,8 @@
         "firstName": "Joe",
         "lastName": "Doe",
         "title": "SalesRepresentative",
-        "Address1": "3023 Parkerhill Rd.",
-        "City": "Mississauga",
-        "State": "Ontario"
+        "address1": "3023 Parkerhill Rd.",
+        "city": "Mississauga",
+        "state": "Ontario"
     }
 ]

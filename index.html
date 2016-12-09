@@ -107,39 +107,39 @@
                 <div class="three fields">
                     <div class="field">
                         <label>First name</label>
-                        <input type="text" placeholder="First Name">
+                        <input v-model="newContact.firstName" type="text" placeholder="First Name">
                     </div>
                     <div class="field">
                         <label>Last name</label>
-                        <input type="text" placeholder="Last Name">
+                        <input v-model="newContact.lastName" type="text" placeholder="Last Name">
                     </div>
                     <div class="field">
                         <label>Title</label>
-                        <input type="text" placeholder="First Name">
+                        <input v-model="newContact.title" type="text" placeholder="Title">
                     </div>
                 </div>
                 <div class="two fields">
                     <div class="field">
                         <label>Phone</label>
-                        <input type="text" placeholder="First Name">
+                        <input v-model="newContact.phone" type="text" placeholder="Phone">
                     </div>
                     <div class="field">
-                        <label>Email</label>
-                        <input type="text" placeholder="First Name">
+                        <label>e-Mail</label>
+                        <input v-model="newContact.email" type="text" placeholder="e-Mail">
                     </div>
                 </div>
                 <div class="three fields">
                     <div class="field">
                         <label>Address</label>
-                        <input type="text" placeholder="First Name">
+                        <input v-model="newContact.address1" type="text" placeholder="Address">
                     </div>
                     <div class="field">
                         <label>City</label>
-                        <input type="text" placeholder="First Name">
+                        <input v-model="newContact.city" type="text" placeholder="City">
                     </div>
                     <div class="field">
                         <label>State</label>
-                        <input type="text" placeholder="Last Name">
+                        <input v-model="newContact.state" type="text" placeholder="State">
                     </div>
                 </div>
             </div>
@@ -196,16 +196,16 @@
                         {{ currentContact.title }}
                     </div>
                     <div class="description">
-                        {{ currentContact.Address1 }}<br>
+                        {{ currentContact.address1 }}<br>
                     </div>
                 </div>
                 <div class="extra content">
                     <span class="right floated">
-                        {{ currentContact.State }}
+                        {{ currentContact.state }}
                     </span>
                     <span>
                         <i class="user icon"></i>
-                        {{ currentContact.City }}
+                        {{ currentContact.city }}
                     </span>
                 </div>
             </li>
