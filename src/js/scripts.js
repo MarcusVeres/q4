@@ -144,7 +144,7 @@
                     },
 
                     selectContact : function( index ) {
-                        expo.vue.currentContact = expo.data.contacts[ index ];
+                        expo.vue.currentContact = expo.data.contacts[ parseInt( index - 1 ) ];
                     }, 
 
                     updateCurrentContact : function() {

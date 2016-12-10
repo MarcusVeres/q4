@@ -155,7 +155,7 @@
         -->
         <div class="contact-list">
             <div class="ui middle aligned divided list" v-bind:class="{ aligned : isListView , horizontal : isGridView }">
-                <div class="item" v-for="( user , index) in filteredUsers" v-on:click="selectContact( index )">
+                <div class="item" v-for="user in filteredUsers" v-on:click="selectContact( user.id )">
                     <div class="right floated content">
                         <a :href="'tel:' + user.phone" target="_blank" class="ui flush button" v-bind:class="{ disabled : !user.phone }">
                             <i class="phone icon"></i>
