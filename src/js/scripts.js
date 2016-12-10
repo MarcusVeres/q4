@@ -39,6 +39,11 @@
             })
         },
 
+        makeDummyAjaxCall : function()
+        {
+            console.log( "this is a dummy ajax call" );
+        },
+
         processContact : function()
         {   
             // create a shortcut to the newContact object
@@ -114,6 +119,7 @@
                     newContact : {} , 
                     isListView : true ,
                     isGridView : false ,
+                    isEditMode : false ,
                 },
 
                 computed: {
@@ -151,7 +157,14 @@
                         // update the data in our contact array with the currentContact properties
                         var id = expo.vue.currentContact.id;
                         expo.data.contacts[ id - 1 ] = expo.vue.currentContact;
-                    }
+
+                        // dummy ajax call goes here
+                        expo.makeDummyAjaxCall();
+                    },
+
+                    setEditMode : function( mode ) {
+                        expo.vue.isEditMode = mode;
+                    },
 
                 },
 
