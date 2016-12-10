@@ -147,6 +147,12 @@
                         expo.vue.currentContact = expo.data.contacts[ index ];
                     }, 
 
+                    updateCurrentContact : function() {
+                        // update the data in our contact array with the currentContact properties
+                        var id = expo.vue.currentContact.id;
+                        expo.data.contacts[ id - 1 ] = expo.vue.currentContact;
+                    }
+
                 },
 
             });
