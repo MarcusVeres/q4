@@ -6,6 +6,7 @@ import os
 # initial app config
 
 UPLOAD_DIR = 'static/img'
+JSON_DIR = 'static/data'
 ALLOW = ["png", "jpg", "jpeg", "gif", "webm"]
 
 app = Flask(__name__)
@@ -41,6 +42,23 @@ def validate_file(filename) :
 @app.route('/')
 def index() :
     return render_template( 'index.html' )
+
+
+@app.route('/save-json' , methods = [ 'GET' , 'POST' ] )
+def save_json() : 
+
+    file_path = os.path.join( JSON_DIR , 'data.txt' )
+    obj = open( file_path , 'wb')
+    obj.write( "test" )
+    obj.close
+
+    return "written"
+
+
+@app.route('/reset-json' , methods = [ 'GET' , 'POST' ] )
+def reset_json() :
+
+    return "copied original.json over contacts.json"
 
 
 # start the app
