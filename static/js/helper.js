@@ -29,7 +29,7 @@
             }
         };
 
-        // not sure what this does...
+        // send the request to the endpoint 
         request.send( null );
 
     };
