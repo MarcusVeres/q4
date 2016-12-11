@@ -157,6 +157,9 @@
 
                     updateCurrentContact : function() 
                     {
+                        // dummy ajax call goes here
+                        expo.makeDummyAjaxCall();
+
                         // update the data in our contact array with the currentContact properties
                         var currentId = expo.vue.currentContact.id;
                         
@@ -181,8 +184,17 @@
                         // hide the edit pane
                         expo.vue.setEditMode( false );
 
-                        // dummy ajax call goes here
-                        expo.makeDummyAjaxCall();
+                        // hack fix - vue bullshit
+                        // we have to re-select the contact, to prevent vue from binding it again
+                        expo.vue.selectContact( expo.vue.currentContact.id );
+                    },
+
+                    cancelContactUpdate : function()
+                    {
+                        expo.vue.setEditMode( false );
+
+                        // re-select the contact, to reset all settings
+                        expo.vue.selectContact( expo.vue.currentContact.id );
                     },
 
                     setEditMode : function( mode ) {
