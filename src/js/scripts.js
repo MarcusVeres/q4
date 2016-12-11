@@ -14,20 +14,11 @@
             displayMode : "aligned" , 
         } ,
 
-        data : {
-            contacts : [] , 
-            currentContact : {} , 
-            newContact : {} ,
-        } ,
-
         loadContents : function()
         {
             helper.loadJson( '/static/data/contacts.json' , function( contactsData )
             {
                 console.log( "contacts are:" , contactsData );
-
-                // assign to local data object 
-                expo.data.contacts = contactsData;
 
                 // populate vue 
                 expo.vue.contacts = contactsData;
@@ -52,7 +43,7 @@
             // simulate the ID because we're not using a database
             // this is a little ghetto because we dont have a database-based way of incrementing contact ID 
             // if we increment by the number of contacts, we risk overlapping IDs if contacts are deleted 
-            var lastContact = expo.data.contacts[ expo.data.contacts.length - 1 ];
+            var lastContact = expo.vue.contacts[ expo.vue.contacts.length - 1 ];
             var newId = parseInt( lastContact.id ) + 1;
             newContact.id = newId.toString();
             console.log( newContact.id );
