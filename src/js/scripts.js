@@ -111,7 +111,7 @@
                     users : [] ,
                     message : "" ,
                     displayMode : expo.settings.displayMode ,
-                    currentContact : expo.data.currentContact ,
+                    currentContact : {} ,
                     isNewContactPaneVisible : false ,
                     newContact : {} , 
                     isListView : true ,
@@ -144,9 +144,20 @@
 
                     selectContact : function( index )
                     {
-                        expo.vue.currentContact = expo.vue.users.filter( function( contact ) {
+                        // it seems that VueJS is a little too clever for its own good
+                        // it will bind to all references of an object, when we want to pass by value
+                        // if we were to directly assign the currentContact to an array value, it would update that contact in users as well
+
+                        // grab the filtered contact
+                        var filteredContact = expo.vue.users.filter( function( contact ) {
                             return contact.id === index;
-                        })[0];
+                        })[ 0 ];
+    
+                        // clone the object by value, so that we don't affect the main list
+                        var clonedContact = JSON.parse( JSON.stringify( filteredContact ));
+
+                        // assign the cloned contact to the currentContact
+                        expo.vue.currentContact = clonedContact;
                     }, 
 
                     updateCurrentContact : function() 
@@ -158,6 +169,7 @@
                         {
                             if( expo.vue.users[ i ].id == currentId )
                             {
+                                console.log( "we found a match" );
                                 expo.vue.users[ i ] = expo.vue.currentContact;
                                 break; 
                             }
