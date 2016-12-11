@@ -127,10 +127,6 @@
                             return searchRegex.test( user.firstName ) || searchRegex.test( user.lastName )
                         })
                     },
-                    reversedMessage: function () {
-                      // `this` points to the vm instance
-                      return this.message.split('').reverse().join('')
-                    }
                 },
 
                 methods: {
@@ -192,7 +188,6 @@
 
             // set search message test 
             expo.vue.message = "";
-            console.log( expo.vue.reversedMessage )
         }
 
     };
