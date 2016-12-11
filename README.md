@@ -25,13 +25,16 @@ To run the application *after* you have already installed it, use
 
 Ensure you have pip installed  
 https://pip.pypa.io/en/stable/installing/
+
     [sudo] easy_install pip
 
 Ensure you have virtualenv installed  
 https://virtualenv.pypa.io/en/stable/installation/
+
     [sudo] pip install virtualenv
 
 Get the Python server running 
+
     [ run these from inside the parent directory ]
     virtualenv venv
     . venv/bin/activate
