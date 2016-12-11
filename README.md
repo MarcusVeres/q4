@@ -7,6 +7,7 @@
 - pip
 - virtualenv 
 
+
 ## Installation
 
 ### Automated Installer 
@@ -16,6 +17,9 @@ It will install all dependencies
 
     sh setup.sh
 
+To run the application *after* you have already installed it, use
+
+    sh run.sh
 
 ### Manual Install
 
