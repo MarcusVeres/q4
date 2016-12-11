@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect
+from flask import Flask, json, jsonify, request, render_template, redirect, Response
 from werkzeug.utils import secure_filename
 from datetime import datetime
 import os
@@ -47,12 +47,20 @@ def index() :
 @app.route('/save-json' , methods = [ 'GET' , 'POST' ] )
 def save_json() : 
 
-    file_path = os.path.join( JSON_DIR , 'data.txt' )
-    obj = open( file_path , 'wb')
-    obj.write( "test" )
-    obj.close
+    try : 
+        file_path = os.path.join( JSON_DIR , 'data.txt' )
+        obj = open( file_path , 'wb')
+        obj.write( "test" )
+        obj.close
+        successful = True
 
-    return "written"
+    except: 
+        successful = False
+
+    json_data = json.dumps({ 'successful' : successful })
+    response_object = Response( json_data , status=200 , mimetype='application/json' )
+
+    return response_object
 
 
 @app.route('/reset-json' , methods = [ 'GET' , 'POST' ] )

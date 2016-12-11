@@ -12,6 +12,7 @@
 
         settings : {
             displayMode : "aligned" , 
+            apiRoot : 'http://localhost:5000/' ,
         } ,
 
         loadContents : function()
@@ -30,9 +31,36 @@
             })
         },
 
-        makeDummyAjaxCall : function()
+        updateJsonFile : function()
         {
-            console.log( "this is a dummy ajax call" );
+            // create and configure request object
+            var request = new XMLHttpRequest();
+            request.overrideMimeType( "application/json" );
+
+            // submit a request to the server
+            request.open( "GET" , '/save-json' , true );
+
+            // listen for a success status
+            request.onreadystatechange = function()
+            {
+                if( request.readyState === 4 && request.status == "200" )
+                {
+                    // send the response data back as parsed JSON
+                    var raw = request.responseText;
+                    var parsed = JSON.parse( raw );
+
+                    if( parsed.successful && parsed.successful === true ) {
+                        alert( "JSON file update successfully!" );
+                    }
+                    else {
+                        console.error( parsed );
+                        alert( "There was a problem updating the json file. Check the console for details." );
+                    }
+                }
+            };
+
+            // send the request to the server 
+            request.send( null );
         },
 
         processContact : function()
@@ -93,6 +121,7 @@
             document.getElementById( 'add-contact' ).addEventListener( 'click' , expo.processContact );
             document.getElementById( 'set-view-list' ).addEventListener( 'click' , expo.setDisplayList );
             document.getElementById( 'set-view-grid' ).addEventListener( 'click' , expo.setDisplayGrid );
+            document.getElementById( 'update-json-file' ).addEventListener( 'click' , expo.updateJsonFile );
         },
 
         init : function()
@@ -159,7 +188,7 @@
                     updateCurrentContact : function() 
                     {
                         // dummy ajax call goes here
-                        expo.makeDummyAjaxCall();
+                        // expo.makeDummyAjaxCall();
 
                         // update the data in our contact array with the currentContact properties
                         var currentId = expo.vue.currentContact.id;
