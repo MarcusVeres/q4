@@ -66,8 +66,12 @@
         {
             expo.vue.users.push( newContact );
 
-            // clear the new contact fields 
+            // clear the fields and restore view mode 
             expo.vue.newContact = {};
+            expo.vue.clearSearch();
+
+            // select the new contact
+            expo.vue.selectContact( newContact.id );
         },
 
         updateDataFile : function()
@@ -194,6 +198,15 @@
                         expo.vue.isEditMode = mode;
                     },
 
+                    clearSearch : function() {
+                        expo.vue.message = "";
+                    },
+
+                    resetPanels : function() {
+                        expo.vue.currentContact = {};
+                        expo.vue.setEditMode( false );
+                    },
+
                     deleteCurrentContact : function()
                     {
                         // create a new array without the current contact
@@ -201,7 +214,8 @@
                             return contact.id !== expo.vue.currentContact.id;
                         });
                         // clear up the current fields 
-                        expo.vue.currentContact = {};
+                        // expo.vue.currentContact = {};
+                        expo.vue.resetPanels();
                         // console.log( "contacts are now:" , expo.vue.users );
                     },
 
