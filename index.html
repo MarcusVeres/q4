@@ -151,156 +151,166 @@
             </div>
         </div>
 
-        <!-- 
-        List or Grid View should show only First Name Last Name and Phone
-        -->
-        <div class="contact-list">
-            <div class="ui middle aligned divided list" v-bind:class="{ aligned : isListView , horizontal : isGridView }">
-                <div class="item" v-for="contact in filteredContacts" v-on:click="selectContact( contact.id )">
-                    <div class="right floated content">
-                        <a :href="'tel:' + contact.phone" target="_blank" class="ui flush button" v-bind:class="{ disabled : !contact.phone }">
-                            <i class="phone icon"></i>
-                            <span class="hide-from-mobile">
-                                {{ contact.phone || "Not Available" }}
-                            </span>
-                        </a>
-                    </div>
-                    <img class="ui avatar image" src="http://placehold.it/64/64/">
-                    <div class="content">
-                        <div class="header">{{ contact.firstName }} {{ contact.lastName }}</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
+        <div class="ui two column stackable grid">
+        <div class="column">
 
-        <!-- inspector pane -->
-        <div class="inspector-pane" v-bind:class="{ visible : currentContact.id }">
-
-            <div class="ui top attached tabular menu">
-                <div class="item" v-bind:class="{ active : !isEditMode }" v-on:click="setEditMode( false )">View Details</div>
-                <div class="item" v-bind:class="{ active : isEditMode }" v-on:click="setEditMode( true )">Edit</div>
-            </div>
-
-            <div class="ui bottom attached tab segment" v-bind:class="{ active : !isEditMode }">
-                <!-- 
-                On Click of a contact please display details of a contact with all the available data.
-                Detail view should have a functionality for editing and deleting the contact. 
-                <h4>Contact Details</h4>
-                -->
-                <ul class="ui link cards">
-                    <li class="card">
-                        <div class="image">
-                            <img src="http://placehold.it/256/256">
+            <!-- 
+            List or Grid View should show only First Name Last Name and Phone
+            -->
+            <div class="contact-list">
+                <div class="ui middle aligned divided list" v-bind:class="{ aligned : isListView , horizontal : isGridView }">
+                    <div class="item" v-for="contact in filteredContacts" v-on:click="selectContact( contact.id )">
+                        <div class="right floated content">
+                            <a :href="'tel:' + contact.phone" target="_blank" class="ui flush button" v-bind:class="{ disabled : !contact.phone }">
+                                <i class="phone icon"></i>
+                                <span class="hide-from-mobile">
+                                    {{ contact.phone || "Not Available" }}
+                                </span>
+                            </a>
                         </div>
+                        <img class="ui avatar image" src="http://placehold.it/64/64/">
                         <div class="content">
-                            <div class="header">
-                                {{ currentContact.firstName }} 
-                                {{ currentContact.lastName }}
-                            </div>
-                            <div class="meta">
-                                {{ currentContact.title }}
-                            </div>
-                            <div class="description">
-                                {{ currentContact.address1 }}<br>
-                            </div>
+                            <div class="header">{{ contact.firstName }} {{ contact.lastName }}</div>
                         </div>
-                        <div class="extra content">
-                            <span class="right floated">
-                                {{ currentContact.state }}
-                            </span>
-                            <span>
-                                <i class="user icon"></i>
-                                {{ currentContact.city }}
-                            </span>
-                        </div>
-                    </li>
-                </ul>
+                    </div>
+                </div>
             </div>
 
-            <div class="ui bottom attached tab segment" v-bind:class="{ active : isEditMode }">
-                <!--
-                When contact is in edit mode add 2 buttons "Save" and "Cancel"
-                - Save button should mimic an Ajax call to the database. 
-                    No call needs to be made but please make sure the data is available for saving. 
-                - Cancel - Close the edit mode and display the detail view of the contact. 
-                <h4>Edit Contact Details</h4>
-                -->
-                <!-- TODO: we need a different layout for the edit contact, as it'll be in a smaller window -->
-                <div class="ui form">
-                    <div class="three fields">
-                        <div class="field">
-                            <label>First name</label>
-                            <input v-model="currentContact.firstName" type="text" placeholder="First Name">
-                        </div>
-                        <div class="field">
-                            <label>Last name</label>
-                            <input v-model="currentContact.lastName" type="text" placeholder="Last Name">
-                        </div>
-                        <div class="field">
-                            <label>Title</label>
-                            <input v-model="currentContact.title" type="text" placeholder="Title">
-                        </div>
-                    </div>
-                    <div class="two fields">
-                        <div class="field">
-                            <label>Phone</label>
-                            <input v-model="currentContact.phone" type="text" placeholder="Phone">
-                        </div>
-                        <div class="field">
-                            <label>e-Mail</label>
-                            <input v-model="currentContact.email" type="text" placeholder="e-Mail">
-                        </div>
-                    </div>
-                    <div class="three fields">
-                        <div class="field">
-                            <label>Address</label>
-                            <input v-model="currentContact.address1" type="text" placeholder="Address">
-                        </div>
-                        <div class="field">
-                            <label>City</label>
-                            <input v-model="currentContact.city" type="text" placeholder="City">
-                        </div>
-                        <div class="field">
-                            <label>State</label>
-                            <input v-model="currentContact.state" type="text" placeholder="State">
-                        </div>
-                    </div>
+        </div><!-- / column -->
+        <div class="column">
+
+            <!-- inspector pane -->
+            <div class="inspector-pane" v-bind:class="{ visible : currentContact.id }">
+
+                <div class="ui top attached tabular menu">
+                    <div class="item" v-bind:class="{ active : !isEditMode }" v-on:click="setEditMode( false )">View Details</div>
+                    <div class="item" v-bind:class="{ active : isEditMode }" v-on:click="setEditMode( true )">Edit</div>
                 </div>
 
-                <div class="ui buttons left floated">
-                    <div class="ui fade animated button" tabindex="0" v-on:click="cancelContactUpdate">
-                        <div class="visible content">
-                            Cancel
-                        </div>
-                        <div class="hidden content">
-                            <i class="cancel icon"></i>
-                        </div>
-                    </div>
-                    <div class="or"></div>
-                    <div class="ui positive fade animated button" tabindex="0" v-on:click="updateCurrentContact">
-                        <div class="visible content">
-                            Save Changes
-                        </div>
-                        <div class="hidden content">
-                            <i class="save icon"></i>
-                        </div>
-                    </div>
+                <div class="ui bottom attached tab segment" v-bind:class="{ active : !isEditMode }">
+                    <!-- 
+                    On Click of a contact please display details of a contact with all the available data.
+                    Detail view should have a functionality for editing and deleting the contact. 
+                    <h4>Contact Details</h4>
+                    -->
+                    <ul class="ui link cards">
+                        <li class="card">
+                            <div class="image">
+                                <img src="http://placehold.it/256/256">
+                            </div>
+                            <div class="content">
+                                <div class="header">
+                                    {{ currentContact.firstName }} 
+                                    {{ currentContact.lastName }}
+                                </div>
+                                <div class="meta">
+                                    {{ currentContact.title }}
+                                </div>
+                                <div class="description">
+                                    {{ currentContact.address1 }}<br>
+                                </div>
+                            </div>
+                            <div class="extra content">
+                                <span class="right floated">
+                                    {{ currentContact.state }}
+                                </span>
+                                <span>
+                                    <i class="user icon"></i>
+                                    {{ currentContact.city }}
+                                </span>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
 
-                <div class="right floated">
-                    <div class="ui fade animated negative button" tabindex="0" v-on:click="deleteCurrentContact">
-                        <div class="visible content">
-                            Delete
+                <div class="ui bottom attached tab segment" v-bind:class="{ active : isEditMode }">
+                    <!--
+                    When contact is in edit mode add 2 buttons "Save" and "Cancel"
+                    - Save button should mimic an Ajax call to the database. 
+                        No call needs to be made but please make sure the data is available for saving. 
+                    - Cancel - Close the edit mode and display the detail view of the contact. 
+                    <h4>Edit Contact Details</h4>
+                    -->
+                    <!-- TODO: we need a different layout for the edit contact, as it'll be in a smaller window -->
+                    <div class="ui form">
+                        <div class="three fields">
+                            <div class="field">
+                                <label>First name</label>
+                                <input v-model="currentContact.firstName" type="text" placeholder="First Name">
+                            </div>
+                            <div class="field">
+                                <label>Last name</label>
+                                <input v-model="currentContact.lastName" type="text" placeholder="Last Name">
+                            </div>
+                            <div class="field">
+                                <label>Title</label>
+                                <input v-model="currentContact.title" type="text" placeholder="Title">
+                            </div>
                         </div>
-                        <div class="hidden content">
-                            <i class="trash icon"></i>
+                        <div class="two fields">
+                            <div class="field">
+                                <label>Phone</label>
+                                <input v-model="currentContact.phone" type="text" placeholder="Phone">
+                            </div>
+                            <div class="field">
+                                <label>e-Mail</label>
+                                <input v-model="currentContact.email" type="text" placeholder="e-Mail">
+                            </div>
+                        </div>
+                        <div class="three fields">
+                            <div class="field">
+                                <label>Address</label>
+                                <input v-model="currentContact.address1" type="text" placeholder="Address">
+                            </div>
+                            <div class="field">
+                                <label>City</label>
+                                <input v-model="currentContact.city" type="text" placeholder="City">
+                            </div>
+                            <div class="field">
+                                <label>State</label>
+                                <input v-model="currentContact.state" type="text" placeholder="State">
+                            </div>
                         </div>
                     </div>
-                </div>
 
+                    <div class="ui buttons left floated">
+                        <div class="ui fade animated button" tabindex="0" v-on:click="cancelContactUpdate">
+                            <div class="visible content">
+                                Cancel
+                            </div>
+                            <div class="hidden content">
+                                <i class="cancel icon"></i>
+                            </div>
+                        </div>
+                        <div class="or"></div>
+                        <div class="ui positive fade animated button" tabindex="0" v-on:click="updateCurrentContact">
+                            <div class="visible content">
+                                Save Changes
+                            </div>
+                            <div class="hidden content">
+                                <i class="save icon"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="right floated">
+                        <div class="ui fade animated negative button" tabindex="0" v-on:click="deleteCurrentContact">
+                            <div class="visible content">
+                                Delete
+                            </div>
+                            <div class="hidden content">
+                                <i class="trash icon"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-        </div>
-        <!-- / inspector pane -->
+            <!-- / inspector pane -->
+
+        </div><!-- / column -->
+        </div><!-- / two column stackable grid -->
 
     </div>
     </section>
