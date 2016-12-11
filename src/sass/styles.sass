@@ -61,6 +61,7 @@ img.main-logo
 // sections
 
 section
+    padding: 1rem 0
     clear: both
     width: 100%
     background-color: $off_white
@@ -69,10 +70,9 @@ section
         padding: 0
 
     &.header
+        padding: 1.4rem 0
         text-align: center
         background: $white
-        min-height: 64px
-        line-height: 64px
         vertical-align: middle
         // @include grayscale-shadow( 12 , 0.2 )
         border-bottom: 1px solid #CCC
@@ -120,6 +120,13 @@ section
 
 // components
 
+.inspector-pane
+    display: none
+
+    &.visible
+        display: block
+
+
 .collapsible-pane
     background: $white
     padding: 1.4rem 2rem 2.8rem 2rem
@@ -128,6 +135,25 @@ section
     &.hidden
         display: none
 
+.contact-list
+    margin: 1.4rem 0 1.8rem 0
+
+    .ui.horizontal.list:not(.celled)>.item:first-child
+        padding-left: 1.4rem !important
+
+    .list .item
+        margin: 2px !important
+        padding: 0.2rem 0.5rem
+        cursor: pointer
+        transition: 0.3s all ease-in-out
+
+        &:hover
+            background: $white
+            @include border-radius( 4px )
+
+            .header 
+                transition: 0.3s all ease-in-out
+                color: $green
 
 .contact-view,
 .ui.link.cards
@@ -139,6 +165,25 @@ section
         .card
             background: teal
 
+
+.ui.top.attached.tabular.menu > *
+    cursor: pointer
+    transition: all 0.3s ease-in-out
+
+    &:hover 
+        background: $white
+
+.ui.middle.aligned.divided.list.horizontal
+    text-align: center
+
+    .item 
+        border: none 
+        display: inline-block
+        min-width: 360px
+        padding: 1.2rem 1.6rem
+        border: 1px solid $light_gray
+        @include border-radius( 8px )
+        text-align: left
 
 // 
 
