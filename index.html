@@ -265,15 +265,39 @@
                         </div>
                     </div>
                 </div>
-                <div class="ui buttons">
-                    <button class="ui button">Cancel</button>
-                    <div class="or"></div>
-                    <button class="ui positive button" v-on:click="updateCurrentContact">
-                        Save Changes
-                    </button>
-                </div>
-            </div>
 
+                <div class="ui buttons left floated">
+                    <div class="ui fade animated button" tabindex="0" v-on:click="setEditMode( false )">
+                        <div class="visible content">
+                            Cancel
+                        </div>
+                        <div class="hidden content">
+                            <i class="cancel icon"></i>
+                        </div>
+                    </div>
+                    <div class="or"></div>
+                    <div class="ui positive fade animated button" tabindex="0" v-on:click="updateCurrentContact">
+                        <div class="visible content">
+                            Save Changes
+                        </div>
+                        <div class="hidden content">
+                            <i class="save icon"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="right floated">
+                    <div class="ui fade animated negative button" tabindex="0" v-on:click="deleteCurrentContact">
+                        <div class="visible content">
+                            Delete
+                        </div>
+                        <div class="hidden content">
+                            <i class="trash icon"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
         <!-- / inspector pane -->
 
@@ -285,24 +309,7 @@
     -->
     <section class="footer">
     <div class="content-wrapper">
-        <div class="ui animated button" tabindex="0">
-          <div class="visible content">Next</div>
-          <div class="hidden content">
-            <i class="right arrow icon"></i>
-          </div>
-        </div>
-        <div class="ui vertical animated button" tabindex="0">
-          <div class="hidden content">Shop</div>
-          <div class="visible content">
-            <i class="shop icon"></i>
-          </div>
-        </div>
-        <div class="ui animated fade button" tabindex="0">
-          <div class="visible content">Sign-up for a Pro account</div>
-          <div class="hidden content">
-            $12.99 a month
-          </div>
-        </div>
+        &copy; 2016 Marcus. All rights reserved.
     </div>
     </section>
 

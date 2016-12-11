@@ -50,7 +50,12 @@
             var newContact = expo.vue.newContact;
 
             // simulate the ID because we're not using a database
-            newContact.id = ( expo.data.contacts.length + 1 ).toString();
+            // this is a little ghetto because we dont have a database-based way of incrementing user ID 
+            // if we increment by the number of contacts, we risk overlapping IDs if contacts are deleted 
+            var lastContact = expo.data.contacts[ expo.data.contacts.length - 1 ];
+            var newId = parseInt( lastContact.id ) + 1;
+            newContact.id = newId.toString();
+            console.log( newContact.id );
 
             // processing is complete
             expo.addContact( newContact );
@@ -59,18 +64,7 @@
 
         addContact : function( newContact )
         {
-            expo.data.contacts.push( newContact );
-            console.log( expo.data.contacts );
-        },
-
-        editContact : function()
-        {
-
-        },
-
-        removeContact : function()
-        {
-            // code goes here
+            expo.vue.users.push( newContact );
         },
 
         updateDataFile : function()
@@ -149,14 +143,26 @@
                         expo.vue.isNewContactPaneVisible = false;
                     },
 
-                    selectContact : function( index ) {
-                        expo.vue.currentContact = expo.data.contacts[ parseInt( index - 1 ) ];
+                    selectContact : function( index )
+                    {
+                        expo.vue.currentContact = expo.vue.users.filter( function( contact ) {
+                            return contact.id === index;
+                        })[0];
                     }, 
 
-                    updateCurrentContact : function() {
+                    updateCurrentContact : function() 
+                    {
                         // update the data in our contact array with the currentContact properties
-                        var id = expo.vue.currentContact.id;
-                        expo.data.contacts[ id - 1 ] = expo.vue.currentContact;
+                        var currentId = expo.vue.currentContact.id;
+                        
+                        for( var i = 0 ; i < expo.vue.users.length ; i++ )
+                        {
+                            if( expo.vue.users[ i ].id == currentId )
+                            {
+                                expo.vue.users[ i ] = expo.vue.currentContact;
+                                break; 
+                            }
+                        }
 
                         // dummy ajax call goes here
                         expo.makeDummyAjaxCall();
@@ -164,6 +170,17 @@
 
                     setEditMode : function( mode ) {
                         expo.vue.isEditMode = mode;
+                    },
+
+                    deleteCurrentContact : function()
+                    {
+                        // create a new array without the current contact
+                        expo.vue.users = expo.vue.users.filter(function( contact ) {
+                            return contact.id !== expo.vue.currentContact.id;
+                        });
+                        // clear up the current fields 
+                        expo.vue.currentContact = {};
+                        // console.log( "contacts are now:" , expo.vue.users );
                     },
 
                 },
