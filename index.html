@@ -25,10 +25,10 @@
     <section class="header">
     <div class="content-wrapper">
 
-        <!-- Header
-        Logo (your own design)
-        -->
         <h1>
+            <!-- Header
+            Logo (your own design)
+            -->
             <img class="main-logo" src="/static/img/green-logo.svg" alt="Green Capensis Logo">
         </h1>
 
@@ -70,17 +70,14 @@
             </div>
 
             <div class="right menu">
-                <!-- 
-                Please place "Add Contact" button which will display a from for adding new contact, 
-                form should include 2 buttons save and cancel.
-                Save should add the contact to the array of contacts and add to the attached JSON file, 
-                and cancel should close the "Add Contact from", and return to list view.
-                -->
                 <div class="item">
                     <div class="ui left labeled button" tabindex="0">
                         <a class="ui basic right pointing label">
                             <i class="user icon"></i> {{ contacts.length }} 
                         </a>
+                        <!-- 
+                        Please place "Add Contact" button which will display a from for adding new contact, 
+                        -->
                         <div id="show-add-contact" v-on:click="showNewContactPane" class="ui green button">
                             <i class="add user icon"></i> New
                         </div>
@@ -88,6 +85,7 @@
                 </div>                        
                 <!-- 
                 Bonus: Save detail data changes to JSON file.
+                NOTE : should probably do this in the javascript
                 <div class="item">
                     <button class="ui primary button" id="update-data">
                         <i class="save icon"></i> JSON 
@@ -143,10 +141,29 @@
                     </div>
                 </div>
             </div>
+            <!-- 
+            form should include 2 buttons save and cancel.
+            Save should add the contact to the array of contacts and add to the attached JSON file, 
+            and cancel should close the "Add Contact from", and return to list view.
+            -->
             <div class="ui buttons">
-                <button class="ui button" v-on:click="hideNewContactPane">Cancel</button>
+                <div class="ui fade animated button" tabindex="0" v-on:click="hideNewContactPane">
+                    <div class="visible content">
+                        Cancel
+                    </div>
+                    <div class="hidden content">
+                        <i class="cancel icon"></i>
+                    </div>
+                </div>
                 <div class="or"></div>
-                <button id="add-contact" class="ui positive button">Add Contact</button>
+                <div id="add-contact" class="ui positive fade animated button" tabindex="0">
+                    <div class="visible content">
+                        Add Contact 
+                    </div>
+                    <div class="hidden content">
+                        <i class="add user icon"></i>
+                    </div>
+                </div>
             </div>
         </div>
 
