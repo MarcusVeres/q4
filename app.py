@@ -2,6 +2,8 @@ from flask import Flask, json, jsonify, request, render_template, redirect, Resp
 from werkzeug.utils import secure_filename
 from datetime import datetime
 import os
+from shutil import copyfile
+
 
 # initial app config
 
@@ -70,7 +72,19 @@ def save_json() :
 @app.route('/reset-json' , methods = [ 'GET' , 'POST' ] )
 def reset_json() :
 
-    return "copied original.json over contacts.json"
+    original_path = os.path.join( JSON_DIR , 'original.json' )
+    current_path = os.path.join( JSON_DIR , 'contacts.json' )
+
+    try : 
+        copyfile( original_path , current_path )
+        successful = True
+    except: 
+        successful = False
+
+    json_data = json.dumps({ 'successful' : successful })
+    response_object = Response( json_data , status=200 , mimetype='application/json' )
+
+    return response_object
 
 
 # start the app

@@ -60,6 +60,31 @@
             };
         },
 
+        resetJsonFile : function()
+        {
+            var request = new XMLHttpRequest();
+            request.overrideMimeType( "application/json" );
+            request.open( "GET" , '/reset-json' , true );
+            request.onreadystatechange = function()
+            {
+                if( request.readyState === 4 && request.status == "200" )
+                {
+                    var raw = request.responseText;
+                    var parsed = JSON.parse( raw );
+
+                    if( parsed.successful && parsed.successful === true ) {
+                        alert( "JSON file reset!" );
+                        window.location.reload();
+                    }
+                    else {
+                        console.error( parsed );
+                        alert( "There was a problem resetting the json file. Check the console for details." );
+                    }
+                }
+            };
+            request.send( null );
+        },
+
         processContact : function()
         {   
             // create a shortcut to the newContact object
@@ -114,6 +139,7 @@
             document.getElementById( 'set-view-list' ).addEventListener( 'click' , expo.setDisplayList );
             document.getElementById( 'set-view-grid' ).addEventListener( 'click' , expo.setDisplayGrid );
             document.getElementById( 'update-json-file' ).addEventListener( 'click' , expo.updateJsonFile );
+            document.getElementById( 'reset-json-file' ).addEventListener( 'click' , expo.resetJsonFile );
         },
 
         init : function()
