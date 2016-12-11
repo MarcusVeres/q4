@@ -1,3 +1,43 @@
+# Expo
+
+-----
+
+### Automated Installer 
+
+You should be able to get everything to run with the install script.
+It will install all dependencies 
+
+    sh install-server.sh
+    sh install-frontend.sh
+    sh run.sh 
+
+### Manual Install
+
+Get the Python server running 
+
+    virtualenv venv
+    . venv/bin/activate
+    pip install -r pip-requirements.txt
+    py app.py
+
+Get the front-end server running 
+
+    http-server -p 8989
+    
+Navigate to localhost:8989/
+
+----
+
+### Notes:
+
+Apologies for some of the hacks in the code. I thought this test would be a good opportunity to learn VueJS. 
+Unfortunately, it comes with a few caveats that would have required restructuring of the app to fix. Instead, I opted to hack together a solution.
+
+I wish I had enough time to TDD this, but... oh well! 
+Wrote some tests after the fact :)
+
+-----
+    
 ### Contacts Expo
 
 The detailed description of the assignment is included in the index.html file attached, but here are the highlights. 
