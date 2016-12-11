@@ -65,6 +65,9 @@
         addContact : function( newContact )
         {
             expo.vue.users.push( newContact );
+
+            // clear the new contact fields 
+            expo.vue.newContact = {};
         },
 
         updateDataFile : function()
@@ -159,6 +162,9 @@
                                 break; 
                             }
                         }
+
+                        // hide the edit pane
+                        expo.vue.setEditMode( false );
 
                         // dummy ajax call goes here
                         expo.makeDummyAjaxCall();
