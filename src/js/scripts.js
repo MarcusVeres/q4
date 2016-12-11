@@ -91,11 +91,6 @@
             expo.vue.selectContact( newContact.id );
         },
 
-        updateDataFile : function()
-        {
-            // code goes here
-        },
-
         // 
         
         setDisplayGrid : function() 
@@ -126,7 +121,7 @@
             // populate vue 
             expo.vue = new Vue({
 
-                el: '#example-1',
+                el: '#app',
 
                 data: {
                     // TODO : get some of these from the settings in the parent object
