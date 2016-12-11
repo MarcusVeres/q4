@@ -33,20 +33,20 @@
 
         updateJsonFile : function()
         {
-            // create and configure request object
-            var request = new XMLHttpRequest();
-            request.overrideMimeType( "application/json" );
+            var xhr = new XMLHttpRequest();
+            xhr.open( "POST" , "/save-json" , true);
+            xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
 
-            // submit a request to the server
-            request.open( "GET" , '/save-json' , true );
+            // send the collected data as JSON
+            xhr.send( JSON.stringify( expo.vue.contacts ));
 
-            // listen for a success status
-            request.onreadystatechange = function()
+            xhr.onloadend = function ()
             {
-                if( request.readyState === 4 && request.status == "200" )
+                // listen for a success status
+                if ( xhr.status === 200 )
                 {
                     // send the response data back as parsed JSON
-                    var raw = request.responseText;
+                    var raw = xhr.responseText;
                     var parsed = JSON.parse( raw );
 
                     if( parsed.successful && parsed.successful === true ) {
@@ -58,9 +58,6 @@
                     }
                 }
             };
-
-            // send the request to the server 
-            request.send( null );
         },
 
         processContact : function()

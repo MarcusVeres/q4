@@ -1,0 +1,52 @@
+[
+    {
+        "id": "1",
+        "firstName": "Amy",
+        "lastName": "Jones",
+        "title": "Sales Representative",
+        "address1": "90 Street",
+        "city": "Toronto",
+        "state": "Ontario",
+        "phone": "416-123-4567",
+        "email": "amy.jones@hotmail.com"
+    },
+    {
+        "id": "2",
+        "firstName": "James",
+        "lastName": "King",
+        "title": "President and CEO",
+        "address1": "90 Street",
+        "city": "Toronto",
+        "state": "Ontario",
+        "phone": "416-123-4567"
+    },
+    {
+        "id": "3",
+        "firstName": "Ray",
+        "lastName": "Moore",
+        "title": "VPofSales",
+        "address1": "2323 Dundas St.",
+        "city": "Mississauga",
+        "state": "Ontario",
+        "email": "ray.moore@gmail.com"
+    },
+    {
+        "id": "4",
+        "firstName": "John",
+        "lastName": "Williams",
+        "title": "VPofEngineering",
+        "address1": "1343 Steels Ave.",
+        "city": "Brampton",
+        "state": "Ontario",
+        "phone": "416-123-4567"
+    },
+    {
+        "id": "5",
+        "firstName": "Joe",
+        "lastName": "Doe",
+        "title": "SalesRepresentative",
+        "address1": "3023 Parkerhill Rd.",
+        "city": "Mississauga",
+        "state": "Ontario"
+    }
+]

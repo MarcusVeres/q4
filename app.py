@@ -47,10 +47,14 @@ def index() :
 @app.route('/save-json' , methods = [ 'GET' , 'POST' ] )
 def save_json() : 
 
+    json_data = request.json
+    json_string = json.dumps( json_data )
+    print json_string
+
     try : 
-        file_path = os.path.join( JSON_DIR , 'data.txt' )
+        file_path = os.path.join( JSON_DIR , 'contacts.json' )
         obj = open( file_path , 'wb')
-        obj.write( "test" )
+        obj.write( json_string )
         obj.close
         successful = True
 
