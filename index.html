@@ -42,7 +42,8 @@
     <section class="contact-list-header" id="example-1">
     <div class="content-wrapper">
 
-        <div class="ui secondary menu">
+        <div class="ui stackable container menu">
+
             <!-- Navigation 
             - Contact List View ( List or Grid )
             Please make sure to display all contacts in a List view or Grid View 
@@ -64,9 +65,10 @@
             <div class="item">
                 <div class="ui action left icon input">
                     <i class="search icon"></i>
-                    <input v-model="message" type="text" placeholder="Search">
-                    <button class="ui button" v-on:click="clearSearch">
-                        Clear
+                    <input class="search-field" v-model="message" type="text" placeholder="Search">
+                    <button class="ui flush button" v-on:click="clearSearch">
+                        <span class="hide-from-mobile">Clear</span>
+                        <span class="show-mobile-only"><i class="delete icon"></i></span>
                     </button>
                 </div>
             </div>
@@ -90,13 +92,14 @@
                 </div>                        
                 <!-- 
                 Bonus: Save detail data changes to JSON file.
-                -->
                 <div class="item">
                     <button class="ui primary button" id="update-data">
                         <i class="save icon"></i> JSON 
                     </button>
                 </div>
+                -->
             </div>
+
         </div>
 
         <div id="add-new-contact" class="collapsible-pane" v-bind:class="{ hidden: !isNewContactPaneVisible }"> 

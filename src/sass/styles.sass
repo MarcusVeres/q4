@@ -112,13 +112,17 @@ section
 
     // reduce padding on smaller screens
     @media screen and ( max-width: $mobile_cutoff )
-        padding: 1rem 2rem
+        padding: 1rem 0.5rem
 
 
 // nav
 
 
 // components
+
+.search-field
+    max-width: 100px
+    width: 60%
 
 .inspector-pane
     display: none
@@ -220,8 +224,14 @@ section
 
 // responsive hiders
 
+.show-mobile-only
+    display: none
+
 @media screen and (max-width: $mobile_cutoff)
 
     .hide-from-mobile
         display: none
+
+    .show-mobile-only
+        display: block
 
