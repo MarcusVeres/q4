@@ -7,7 +7,8 @@
         "address1": "90 Street",
         "city": "Toronto",
         "state": "Ontario",
-        "phone": "416-123-4567"
+        "phone": "416-123-4567",
+        "email": "amy.jones@hotmail.com"
     },
     {
         "id": "2",
@@ -26,7 +27,8 @@
         "title": "VPofSales",
         "address1": "2323 Dundas St.",
         "city": "Mississauga",
-        "state": "Ontario"
+        "state": "Ontario",
+        "email": "ray.moore@gmail.com"
     },
     {
         "id": "4",

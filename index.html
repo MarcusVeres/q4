@@ -29,17 +29,13 @@
         Logo (your own design)
         -->
         <h1>
-            <!--
-            <img class="main-logo" src="/static/img/logo.svg" alt="Queue Four Logo">
-            -->
-            <i class="rocket icon"></i>
-            Queue Four
+            <img class="main-logo" src="/static/img/green-logo.svg" alt="Green Capensis Logo">
         </h1>
 
     </div>
     </section>
 
-    <section class="contact-list-header" id="example-1">
+    <section class="core" id="example-1">
     <div class="content-wrapper">
 
         <div class="ui stackable container menu">
@@ -86,7 +82,7 @@
                             <i class="user icon"></i> {{ contacts.length }} 
                         </a>
                         <div id="show-add-contact" v-on:click="showNewContactPane" class="ui green button">
-                            <i class="add icon"></i> New
+                            <i class="add user icon"></i> New
                         </div>
                     </div>                        
                 </div>                        
@@ -167,7 +163,7 @@
                         <div class="right floated content">
                             <a :href="'tel:' + contact.phone" target="_blank" class="ui flush button" v-bind:class="{ disabled : !contact.phone }">
                                 <i class="phone icon"></i>
-                                <span class="hide-from-mobile">
+                                <span class="phone-number hide-from-mobile">
                                     {{ contact.phone || "Not Available" }}
                                 </span>
                             </a>
@@ -187,8 +183,14 @@
             <div class="inspector-pane" v-bind:class="{ visible : currentContact.id }">
 
                 <div class="ui top attached tabular menu">
-                    <div class="item" v-bind:class="{ active : !isEditMode }" v-on:click="setEditMode( false )">View Details</div>
-                    <div class="item" v-bind:class="{ active : isEditMode }" v-on:click="setEditMode( true )">Edit</div>
+                    <div class="item" v-bind:class="{ active : !isEditMode }" v-on:click="setEditMode( false )">
+                        <i class="unhide icon"></i>
+                        View Details
+                    </div>
+                    <div class="item" v-bind:class="{ active : isEditMode }" v-on:click="setEditMode( true )">
+                        <i class="write icon"></i>
+                        Edit
+                    </div>
                 </div>
 
                 <div class="ui bottom attached tab segment" v-bind:class="{ active : !isEditMode }">
@@ -211,16 +213,22 @@
                                     {{ currentContact.title }}
                                 </div>
                                 <div class="description">
-                                    {{ currentContact.address1 }}<br>
+                                    <i class="location arrow icon"></i>
+                                    {{ currentContact.address1 }}, {{ currentContact.city }}
                                 </div>
                             </div>
                             <div class="extra content">
                                 <span class="right floated">
-                                    {{ currentContact.state }}
+                                    <a :href="'tel:' + currentContact.phone" target="_blank" class="ui flush primary button tiny" v-bind:class="{ disabled : !currentContact.phone }">
+                                        <i class="phone icon"></i>
+                                    </a>
+                                    <a :href="'mailto:' + currentContact.email" target="_blank" class="ui flush primary button tiny" v-bind:class="{ disabled : !currentContact.email }">
+                                        <i class="mail icon"></i>
+                                    </a>
                                 </span>
                                 <span>
-                                    <i class="user icon"></i>
-                                    {{ currentContact.city }}
+                                    <i class="world icon"></i>
+                                    {{ currentContact.state }}
                                 </span>
                             </div>
                         </li>
