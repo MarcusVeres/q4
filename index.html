@@ -81,7 +81,7 @@
                 <div class="item">
                     <div class="ui left labeled button" tabindex="0">
                         <a class="ui basic right pointing label">
-                            <i class="user icon"></i> {{ users.length }} 
+                            <i class="user icon"></i> {{ contacts.length }} 
                         </a>
                         <div id="show-add-contact" v-on:click="showNewContactPane" class="ui green button">
                             <i class="add icon"></i> New
@@ -156,18 +156,18 @@
         -->
         <div class="contact-list">
             <div class="ui middle aligned divided list" v-bind:class="{ aligned : isListView , horizontal : isGridView }">
-                <div class="item" v-for="user in filteredUsers" v-on:click="selectContact( user.id )">
+                <div class="item" v-for="contact in filteredContacts" v-on:click="selectContact( contact.id )">
                     <div class="right floated content">
-                        <a :href="'tel:' + user.phone" target="_blank" class="ui flush button" v-bind:class="{ disabled : !user.phone }">
+                        <a :href="'tel:' + contact.phone" target="_blank" class="ui flush button" v-bind:class="{ disabled : !contact.phone }">
                             <i class="phone icon"></i>
                             <span class="hide-from-mobile">
-                                {{ user.phone || "Not Available" }}
+                                {{ contact.phone || "Not Available" }}
                             </span>
                         </a>
                     </div>
                     <img class="ui avatar image" src="http://placehold.it/64/64/">
                     <div class="content">
-                        <div class="header">{{ user.firstName }} {{ user.lastName }}</div>
+                        <div class="header">{{ contact.firstName }} {{ contact.lastName }}</div>
                     </div>
                 </div>
             </div>

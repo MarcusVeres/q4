@@ -22,19 +22,19 @@
 
         loadContents : function()
         {
-            helper.loadJson( '/static/data/contacts.json' , function( contacts )
+            helper.loadJson( '/static/data/contacts.json' , function( contactsData )
             {
-                console.log( "contacts are:" , contacts );
+                console.log( "contacts are:" , contactsData );
 
                 // assign to local data object 
-                expo.data.contacts = contacts;
+                expo.data.contacts = contactsData;
 
                 // populate vue 
-                expo.vue.users = contacts;
-                console.log( expo.vue.users );
+                expo.vue.contacts = contactsData;
+                console.log( expo.vue.contacts );
 
                 console.log( "---------" );
-                console.log( "filtered:" , expo.vue.filteredUsers );
+                console.log( "filtered:" , expo.vue.filteredContacts );
 
             })
         },
@@ -50,7 +50,7 @@
             var newContact = expo.vue.newContact;
 
             // simulate the ID because we're not using a database
-            // this is a little ghetto because we dont have a database-based way of incrementing user ID 
+            // this is a little ghetto because we dont have a database-based way of incrementing contact ID 
             // if we increment by the number of contacts, we risk overlapping IDs if contacts are deleted 
             var lastContact = expo.data.contacts[ expo.data.contacts.length - 1 ];
             var newId = parseInt( lastContact.id ) + 1;
@@ -64,7 +64,7 @@
 
         addContact : function( newContact )
         {
-            expo.vue.users.push( newContact );
+            expo.vue.contacts.push( newContact );
 
             // clear the fields and restore view mode 
             expo.vue.newContact = {};
@@ -112,7 +112,7 @@
 
                 data: {
                     // TODO : get some of these from the settings in the parent object
-                    users : [] ,
+                    contacts : [] ,
                     message : "" ,
                     displayMode : expo.settings.displayMode ,
                     currentContact : {} ,
@@ -124,14 +124,14 @@
                 },
 
                 computed: {
-                    filteredUsers: function () {
+                    filteredContacts: function () {
                         var self = this
-                        return self.users.filter(function (user) {
-                            // return user.firstName.indexOf(self.searchQuery) !== -1
-                            // return user.firstName.indexOf( self.message ) !== -1
-                            // return user.firstName.indexOf( self.message ) !== -1;
+                        return self.contacts.filter(function (contact) {
+                            // return contact.firstName.indexOf(self.searchQuery) !== -1
+                            // return contact.firstName.indexOf( self.message ) !== -1
+                            // return contact.firstName.indexOf( self.message ) !== -1;
                             var searchRegex = new RegExp(self.message, 'i')
-                            return searchRegex.test( user.firstName ) || searchRegex.test( user.lastName )
+                            return searchRegex.test( contact.firstName ) || searchRegex.test( contact.lastName )
                         })
                     },
                 },
@@ -150,10 +150,10 @@
                     {
                         // it seems that VueJS is a little too clever for its own good
                         // it will bind to all references of an object, when we want to pass by value
-                        // if we were to directly assign the currentContact to an array value, it would update that contact in users as well
+                        // if we were to directly assign the currentContact to an array value, it would update that contact in contacts as well
 
                         // grab the filtered contact
-                        var filteredContact = expo.vue.users.filter( function( contact ) {
+                        var filteredContact = expo.vue.contacts.filter( function( contact ) {
                             return contact.id === index;
                         })[ 0 ];
     
@@ -169,20 +169,20 @@
                         // update the data in our contact array with the currentContact properties
                         var currentId = expo.vue.currentContact.id;
                         
-                        for( var i = 0 ; i < expo.vue.users.length ; i++ )
+                        for( var i = 0 ; i < expo.vue.contacts.length ; i++ )
                         {
-                            if( expo.vue.users[ i ].id == currentId )
+                            if( expo.vue.contacts[ i ].id == currentId )
                             {
                                 console.log( "we found a match" );
-                                expo.vue.users[ i ] = expo.vue.currentContact;
+                                expo.vue.contacts[ i ] = expo.vue.currentContact;
 
-                                // update something within the users array to force a visual refresh
+                                // update something within the contacts array to force a visual refresh
                                 // because the geniuses who wrote the library refuse to write in a refresh function
                                 // I wouldn't use something like this in production
                                 // but I don't want to spend hours trying to get a solution to work
                                 // so we're going to use a quick hack :)
-                                expo.vue.users.push({});
-                                expo.vue.users.pop();
+                                expo.vue.contacts.push({});
+                                expo.vue.contacts.pop();
                                 break; 
                             }
                         }
@@ -210,13 +210,13 @@
                     deleteCurrentContact : function()
                     {
                         // create a new array without the current contact
-                        expo.vue.users = expo.vue.users.filter(function( contact ) {
+                        expo.vue.contacts = expo.vue.contacts.filter(function( contact ) {
                             return contact.id !== expo.vue.currentContact.id;
                         });
                         // clear up the current fields 
                         // expo.vue.currentContact = {};
                         expo.vue.resetPanels();
-                        // console.log( "contacts are now:" , expo.vue.users );
+                        // console.log( "contacts are now:" , expo.vue.contacts );
                     },
 
                 },
