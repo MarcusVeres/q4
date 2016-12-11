@@ -59,6 +59,7 @@
 
             // clear the fields and restore view mode 
             expo.vue.newContact = {};
+            expo.vue.setEditMode( false );
             expo.vue.clearSearch();
 
             // select the new contact
