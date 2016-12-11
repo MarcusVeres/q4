@@ -1,5 +1,6 @@
 #!/bin/bash
-sudo npm install && 
-# TODO : check if the Chrome command exists
-echo "Please open a browser and navigate to http://localhost:8989" && 
-http-server -p 8989
+virtualenv venv &&
+# TODO : check if virtualenv command exists
+. venv/bin/activate &&
+pip install -r pip-requirements.txt &&
+python app.py
