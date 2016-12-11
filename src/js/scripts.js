@@ -171,10 +171,18 @@
                             {
                                 console.log( "we found a match" );
                                 expo.vue.users[ i ] = expo.vue.currentContact;
+
+                                // update something within the users array to force a visual refresh
+                                // because the geniuses who wrote the library refuse to write in a refresh function
+                                // I wouldn't use something like this in production
+                                // but I don't want to spend hours trying to get a solution to work
+                                // so we're going to use a quick hack :)
+                                expo.vue.users.push({});
+                                expo.vue.users.pop();
                                 break; 
                             }
                         }
-
+                        
                         // hide the edit pane
                         expo.vue.setEditMode( false );
 
